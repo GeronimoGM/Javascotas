@@ -8,18 +8,11 @@ import Social.Interfaces.Notificadora;
 import Usuarios.Clases.Usuario;
 
 public class Comentario implements Notificadora<Comentario>, Likeable, Comparable<Comentario> {
-    private Publicacion publicacion;
     private Usuario usuario;
     private String texto;
     private LocalDateTime hora;
     private HashSet<Like> likes;
 
-    public Publicacion getPublicacion() {
-        return publicacion;
-    }
-    public void setPublicacion(Publicacion publicacion) {
-        this.publicacion = publicacion;
-    }
     public Usuario getUsuario() {
         return usuario;
     }
@@ -40,8 +33,7 @@ public class Comentario implements Notificadora<Comentario>, Likeable, Comparabl
     }
     //cons
 
-    public Comentario(Publicacion publicacion, Usuario usuario, String texto) {
-        this.publicacion = publicacion;
+    public Comentario(Usuario usuario, String texto) {
         this.usuario = usuario;
         this.texto = texto;
         hora = LocalDateTime.now();

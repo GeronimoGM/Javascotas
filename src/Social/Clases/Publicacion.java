@@ -56,6 +56,8 @@ public class Publicacion implements Likeable {
         this.comentarios = comentarios;
         likes = new HashSet<>();
     }
+    
+    //methods
     @Override
     public void likear(Usuario usuario) {
         likes.add(new Like(usuario));
@@ -68,8 +70,12 @@ public class Publicacion implements Likeable {
     public int cantidadLikes() {
         return likes.size();
     }
+    
+    public void anadirComentario(Comentario comentario) {
+        comentarios.add(comentario);
+    }
 
-    //methods
-
-
+    public void eliminarComentario(Comentario comentario) {
+        comentarios.add(comentario);
+    }
 }

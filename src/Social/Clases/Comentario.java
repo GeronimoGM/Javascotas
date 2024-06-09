@@ -7,7 +7,7 @@ import Social.Interfaces.Likeable;
 import Social.Interfaces.Notificadora;
 import Usuarios.Clases.Usuario;
 
-public class Comentario implements Notificadora<Comentario>, Likeable {
+public class Comentario implements Notificadora<Comentario>, Likeable, Comparable<Comentario> {
     private Publicacion publicacion;
     private Usuario usuario;
     private String texto;
@@ -62,6 +62,11 @@ public class Comentario implements Notificadora<Comentario>, Likeable {
 
     public int cantidadLikes() {
         return likes.size();
+    }
+    
+    @Override
+    public int compareTo(Comentario o) {
+        return Integer.compare(this.cantidadLikes(), o.cantidadLikes());
     }
     
     @Override

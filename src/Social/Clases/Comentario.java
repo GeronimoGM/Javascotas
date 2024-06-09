@@ -3,10 +3,11 @@ package Social.Clases;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 
+import Social.Interfaces.Likeable;
 import Social.Interfaces.Notificadora;
 import Usuarios.Clases.Usuario;
 
-public class Comentario implements Notificadora<Comentario> {
+public class Comentario implements Notificadora<Comentario>, Likeable {
     private Publicacion publicacion;
     private Usuario usuario;
     private String texto;
@@ -51,12 +52,12 @@ public class Comentario implements Notificadora<Comentario> {
     }
 
     //methods
-    public boolean anadirLike(Usuario usuario) {
-        return likes.add(new Like(usuario));
+    public void likear(Usuario usuario) {
+        likes.add(new Like(usuario));
     }
 
-    public boolean eliminarLike(Usuario usuario) {
-        return likes.remove(new Like(usuario));
+    public void unlikear(Usuario usuario) {
+        likes.remove(new Like(usuario));
     }
 
     public int cantidadLikes() {

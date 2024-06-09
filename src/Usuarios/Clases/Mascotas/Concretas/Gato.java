@@ -30,9 +30,9 @@ public class Gato extends Mascota {
 
     //cons
 
-    public Gato(String nombre, LocalDate fechaNacimiento, int edad, char sexo, String raza, String jugueteFavorito,
+    public Gato(String nombre, LocalDate fechaNacimiento, char sexo, String raza, String jugueteFavorito,
             String comidaFavorita) {
-        super(nombre, fechaNacimiento, edad, sexo);
+        super(nombre, fechaNacimiento, sexo);
         this.raza = raza;
         this.jugueteFavorito = jugueteFavorito;
         this.comidaFavorita = comidaFavorita;

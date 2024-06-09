@@ -35,16 +35,21 @@ public abstract class Mascota {
 
     //cons
 
-    public Mascota(String nombre, LocalDate fechaNacimiento, int edad, char sexo) {
+    public Mascota(String nombre, LocalDate fechaNacimiento, char sexo) {
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
-        this.edad = edad;
+        this.edad = calcularEdad();
         this.sexo = sexo;
     }
 
     //methods
 
-   
+   public int calcularEdad(){
+    LocalDate hoy = LocalDate.now();
+    int edad = 0;
+    edad = (hoy.getYear() - (fechaNacimiento.getYear()));
+    return edad;
+   }
 
     
 

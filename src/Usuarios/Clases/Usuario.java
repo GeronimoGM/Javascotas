@@ -15,7 +15,7 @@ import Usuarios.Clases.Mascotas.Abstracta.Mascota;
 public class Usuario {
     private String username;
     private String nombre;
-    private String contraseña;
+    private String contrasena;
     private LocalDate fechaDeNacimiento;
     private int edad;
     private File foto;
@@ -25,11 +25,11 @@ public class Usuario {
     private LinkedHashSet<Notificacion<?>> notificaciones; // TODO: fijarse que poner en lugar del comodín o si dejarlo así
     private HashSet<Usuario> bloqueados;
     // Constructores
-    public Usuario(String username, String nombre, String contraseña, LocalDate fechaDeNacimiento, int edad, File foto,
+    public Usuario(String username, String nombre, String contrasena, LocalDate fechaDeNacimiento, int edad, File foto,
             char sexo) {
         this.username = username;
         this.nombre = nombre;
-        this.contraseña = contraseña;
+        this.contrasena = contrasena;
         this.fechaDeNacimiento = fechaDeNacimiento;
         this.edad = edad;
         this.foto = foto;
@@ -52,11 +52,11 @@ public class Usuario {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
     public LocalDate getFechaDeNacimiento() {
         return fechaDeNacimiento;

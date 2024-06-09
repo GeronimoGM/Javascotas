@@ -4,10 +4,11 @@ import java.io.File;
 import java.util.HashSet;
 import java.util.TreeSet;
 
+import Social.Interfaces.Likeable;
 import Usuarios.Clases.Usuario;
 import Usuarios.Clases.Mascotas.Abstracta.Mascota;
 
-public class Publicacion {
+public class Publicacion implements Likeable {
     private Mascota mascota;
     private File foto;
     private String descripcion;
@@ -55,8 +56,20 @@ public class Publicacion {
         this.comentarios = comentarios;
         likes = new HashSet<>();
     }
+    @Override
+    public void likear(Usuario usuario) {
+        likes.add(new Like(usuario));
+    }
+
+    public void unlikear(Usuario usuario) {
+        likes.remove(new Like(usuario));
+    }
+
+    public int cantidadLikes() {
+        return likes.size();
+    }
 
     //methods
 
-    
+
 }

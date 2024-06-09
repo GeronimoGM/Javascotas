@@ -13,9 +13,6 @@ public class Mensaje implements Notificadora<Mensaje> {
     public LocalDateTime getHora() {
         return hora;
     }
-    public void setHora(LocalDateTime hora) {
-        this.hora = hora;
-    }
     public String getTexto() {
         return texto;
     }
@@ -31,8 +28,8 @@ public class Mensaje implements Notificadora<Mensaje> {
 
     //cons
 
-    public Mensaje(LocalDateTime hora, String texto, Usuario usuario) {
-        this.hora = hora;
+    public Mensaje(String texto, Usuario usuario) {
+        hora = LocalDateTime.now();
         this.texto = texto;
         this.usuario = usuario;
     }

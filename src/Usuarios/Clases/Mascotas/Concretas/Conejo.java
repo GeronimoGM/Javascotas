@@ -23,9 +23,9 @@ public class Conejo extends Mascota {
 
     //cons
 
-    public Conejo(String nombre, LocalDate fechaNacimiento, int edad, char sexo, String comidaFavorita,
+    public Conejo(String nombre, LocalDate fechaNacimiento, char sexo, String comidaFavorita,
             double tamanioOrejas) {
-        super(nombre, fechaNacimiento, edad, sexo);
+        super(nombre, fechaNacimiento, sexo);
         this.comidaFavorita = comidaFavorita;
         this.tamanioOrejas = tamanioOrejas;
     }

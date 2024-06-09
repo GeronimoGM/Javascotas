@@ -11,8 +11,8 @@ public class Publicacion {
     private Mascota mascota;
     private File foto;
     private String descripcion;
-    private TreeSet <Comentario> comentarios;
-    private HashSet <Usuario> like;
+    private TreeSet<Comentario> comentarios;
+    private HashSet<Like> likes;
 
     
     public Mascota getMascota() {
@@ -39,23 +39,24 @@ public class Publicacion {
     public void setComentarios(TreeSet<Comentario> comentarios) {
         this.comentarios = comentarios;
     }
-    public HashSet<Usuario> getLike() {
-        return like;
+    public HashSet<Like> getLikes() {
+        return likes;
     }
-    public void setLike(HashSet<Usuario> like) {
-        this.like = like;
+    public void setLike(HashSet<Like> likes) {
+        this.likes = likes;
     }
 
     //cons
 
-    public Publicacion(Mascota mascota, File foto, String descripcion, TreeSet<Comentario> comentarios,
-            HashSet<Usuario> like) {
+    public Publicacion(Mascota mascota, File foto, String descripcion, TreeSet<Comentario> comentarios) {
         this.mascota = mascota;
         this.foto = foto;
         this.descripcion = descripcion;
         this.comentarios = comentarios;
-        this.like = like;
+        likes = new HashSet<>();
     }
 
     //methods
+
+    
 }

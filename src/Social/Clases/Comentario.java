@@ -59,8 +59,8 @@ public class Comentario implements Notificadora<Comentario>, Likeable, Comparabl
     }
     
     @Override
-    public Notificacion<Comentario> notificar(Usuario usuario) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'notificar'");
+    public Usuario notificar(Usuario usuario) {
+        usuario.anadirNotificacion(new Notificacion<Comentario>(this));
+        return usuario;
     }
 }

@@ -37,8 +37,8 @@ public class Mensaje implements Notificadora<Mensaje> {
     //methods
     
     @Override
-    public Notificacion<Mensaje> notificar(Usuario usuario) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'notificar'");
+    public Usuario notificar(Usuario usuario) {
+        usuario.anadirNotificacion(new Notificacion<Mensaje>(this));
+        return usuario;
     }
 }

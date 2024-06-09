@@ -49,11 +49,11 @@ public class Publicacion implements Likeable {
 
     //cons
 
-    public Publicacion(Mascota mascota, File foto, String descripcion, TreeSet<Comentario> comentarios) {
+    public Publicacion(Mascota mascota, File foto, String descripcion) {
         this.mascota = mascota;
         this.foto = foto;
         this.descripcion = descripcion;
-        this.comentarios = comentarios;
+        comentarios = new TreeSet<>();
         likes = new HashSet<>();
     }
     

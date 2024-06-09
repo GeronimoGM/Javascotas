@@ -48,9 +48,9 @@ public class Like implements Notificadora<Like> {
     //methods
     
     @Override
-    public Notificacion<Like> notificar(Usuario usuario) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'notificar'");
+    public Usuario notificar(Usuario usuario) {
+        usuario.anadirNotificacion(new Notificacion<Like>(this));
+        return usuario;
     }
     
 }

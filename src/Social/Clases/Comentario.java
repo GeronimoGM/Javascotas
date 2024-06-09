@@ -12,7 +12,7 @@ public class Comentario implements Notificadora<Comentario>, Likeable, Comparabl
     private Usuario usuario;
     private String texto;
     private LocalDateTime hora;
-    private HashSet <Like> likes;
+    private HashSet<Like> likes;
 
     public Publicacion getPublicacion() {
         return publicacion;
@@ -35,19 +35,16 @@ public class Comentario implements Notificadora<Comentario>, Likeable, Comparabl
     public LocalDateTime getHora() {
         return hora;
     }
-    public void setHora(LocalDateTime hora) {
-        this.hora = hora;
-    }
     public HashSet<Like> getLikes() {
         return likes;
     }
     //cons
 
-    public Comentario(Publicacion publicacion, Usuario usuario, String texto, LocalDateTime hora) {
+    public Comentario(Publicacion publicacion, Usuario usuario, String texto) {
         this.publicacion = publicacion;
         this.usuario = usuario;
         this.texto = texto;
-        this.hora = hora;
+        hora = LocalDateTime.now();
         likes = new HashSet<>();
     }
 

@@ -2,6 +2,8 @@ package Usuarios.Clases.Mascotas.Abstracta;
 
 import java.time.LocalDate;
 
+import javax.management.InvalidAttributeValueException;
+
 public abstract class Mascota {
     private String nombre;
     private LocalDate fechaNacimiento;
@@ -23,8 +25,13 @@ public abstract class Mascota {
     public int getEdad() {
         return edad;
     }
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setEdad(int edad) throws InvalidAttributeValueException {
+        if (edad < 0) {
+            throw new InvalidAttributeValueException("La edad no puede ser menor a 0");
+        }
+        else {
+            this.edad = edad;
+        }
     }
     public char getSexo() {
         return sexo;

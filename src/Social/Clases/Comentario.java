@@ -6,7 +6,7 @@ import java.util.HashSet;
 import Social.Interfaces.Notificadora;
 import Usuarios.Clases.Usuario;
 
-public class Comentario implements Notificadora {
+public class Comentario implements Notificadora<Comentario> {
     private Publicacion publicacion;
     private Usuario usuario;
     private String texto;
@@ -61,5 +61,11 @@ public class Comentario implements Notificadora {
 
     public int cantidadLikes() {
         return likes.size();
+    }
+    
+    @Override
+    public Notificacion<Comentario> notificar(Usuario usuario) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'notificar'");
     }
 }

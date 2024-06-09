@@ -3,7 +3,7 @@ package Social.Clases;
 import Social.Interfaces.Notificadora;
 import Usuarios.Clases.Usuario;
 
-public class Like implements Notificadora {
+public class Like implements Notificadora<Like> {
     private Usuario usuario;
 
     public Usuario getUsuario() {
@@ -46,6 +46,11 @@ public class Like implements Notificadora {
     }
 
     //methods
-
+    
+    @Override
+    public Notificacion<Like> notificar(Usuario usuario) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'notificar'");
+    }
     
 }

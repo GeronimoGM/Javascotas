@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import Social.Interfaces.Notificadora;
 import Usuarios.Clases.Usuario;
 
-public class Mensaje implements Notificadora {
+public class Mensaje implements Notificadora<Mensaje> {
     private LocalDateTime hora;
     private String texto;
     private Usuario usuario;
@@ -36,7 +36,12 @@ public class Mensaje implements Notificadora {
         this.texto = texto;
         this.usuario = usuario;
     }
-
+    
     //methods
     
+    @Override
+    public Notificacion<Mensaje> notificar(Usuario usuario) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'notificar'");
+    }
 }

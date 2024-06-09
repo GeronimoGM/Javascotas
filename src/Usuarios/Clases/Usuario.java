@@ -83,6 +83,14 @@ public class Usuario {
         this.sexo = sexo;
     }
     // Métodos
+    public void anadirNotificacion(Notificacion<?> notificacion) {
+        notificaciones.add(notificacion);
+    }
+
+    public void limpiarNotificaciones() {
+        notificaciones = new LinkedHashSet<>();
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;

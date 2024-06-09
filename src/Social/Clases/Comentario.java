@@ -1,6 +1,6 @@
 package Social.Clases;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 
 import Social.Interfaces.Notificadora;
@@ -10,7 +10,7 @@ public class Comentario implements Notificadora {
     private Publicacion publicacion;
     private Usuario usuario;
     private String texto;
-    private LocalDate hora;
+    private LocalDateTime hora;
     private HashSet <Usuario> likes;
 
     public Publicacion getPublicacion() {
@@ -31,10 +31,10 @@ public class Comentario implements Notificadora {
     public void setTexto(String texto) {
         this.texto = texto;
     }
-    public LocalDate getHora() {
+    public LocalDateTime getHora() {
         return hora;
     }
-    public void setHora(LocalDate hora) {
+    public void setHora(LocalDateTime hora) {
         this.hora = hora;
     }
     public HashSet<Usuario> getLikes() {
@@ -46,7 +46,7 @@ public class Comentario implements Notificadora {
 
     //cons
 
-    public Comentario(Publicacion publicacion, Usuario usuario, String texto, LocalDate hora, HashSet<Usuario> likes) {
+    public Comentario(Publicacion publicacion, Usuario usuario, String texto, LocalDateTime hora, HashSet<Usuario> likes) {
         this.publicacion = publicacion;
         this.usuario = usuario;
         this.texto = texto;

@@ -1,19 +1,19 @@
 package Social.Clases;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import Social.Interfaces.Notificadora;
 import Usuarios.Clases.Usuario;
 
 public class Mensaje implements Notificadora {
-    private LocalDate hora;
+    private LocalDateTime hora;
     private String texto;
     private Usuario usuario;
     
-    public LocalDate getHora() {
+    public LocalDateTime getHora() {
         return hora;
     }
-    public void setHora(LocalDate hora) {
+    public void setHora(LocalDateTime hora) {
         this.hora = hora;
     }
     public String getTexto() {
@@ -31,7 +31,7 @@ public class Mensaje implements Notificadora {
 
     //cons
 
-    public Mensaje(LocalDate hora, String texto, Usuario usuario) {
+    public Mensaje(LocalDateTime hora, String texto, Usuario usuario) {
         this.hora = hora;
         this.texto = texto;
         this.usuario = usuario;

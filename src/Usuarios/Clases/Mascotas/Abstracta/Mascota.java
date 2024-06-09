@@ -36,17 +36,20 @@ public abstract class Mascota {
     public char getSexo() {
         return sexo;
     }
-    public void setSexo(char sexo) {
-        this.sexo = sexo;
+    public void setSexo(char sexo) throws InvalidAttributeValueException {
+        sexo = Character.toLowerCase(sexo);
+        if (sexo != 'f' && sexo != 'm') {
+            throw new InvalidAttributeValueException("El sexo solo puede ser femenino(f) o masculino(m)");
+        }
     }
 
     //cons
 
-    public Mascota(String nombre, LocalDate fechaNacimiento, char sexo) {
+    public Mascota(String nombre, LocalDate fechaNacimiento, char sexo) throws InvalidAttributeValueException {
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
-        this.edad = calcularEdad();
-        this.sexo = sexo;
+        setEdad(calcularEdad());
+        setSexo(sexo);
     }
 
     //methods

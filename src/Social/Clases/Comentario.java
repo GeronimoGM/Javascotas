@@ -59,7 +59,7 @@ public class Comentario implements Notificadora<Comentario>, Likeable, Comparabl
     }
     
     @Override
-    public Notificacion<Comentario> notificar(Usuario usuario) {
+    public Usuario notificar(Usuario usuario) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'notificar'");
     }

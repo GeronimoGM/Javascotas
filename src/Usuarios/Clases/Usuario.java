@@ -22,7 +22,7 @@ public class Usuario {
     private char sexo;
     private ArrayList<Mascota> mascotas;
     private LinkedList<Chat> chats;
-    private LinkedHashSet<Notificacion<?>> notificaciones; // TODO: fijarse que poner en lugar del comodín o si dejarlo así
+    private LinkedHashSet<Notificacion<?>> notificaciones;
     private HashSet<Usuario> bloqueados;
     // Constructores
     public Usuario(String username, String nombre, String contrasena, LocalDate fechaDeNacimiento, int edad, File foto,

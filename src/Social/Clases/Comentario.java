@@ -11,7 +11,7 @@ public class Comentario implements Notificadora {
     private Usuario usuario;
     private String texto;
     private LocalDateTime hora;
-    private HashSet <Usuario> likes;
+    private HashSet <Like> likes;
 
     public Publicacion getPublicacion() {
         return publicacion;
@@ -37,23 +37,29 @@ public class Comentario implements Notificadora {
     public void setHora(LocalDateTime hora) {
         this.hora = hora;
     }
-    public HashSet<Usuario> getLikes() {
+    public HashSet<Like> getLikes() {
         return likes;
     }
-    public void setLikes(HashSet<Usuario> likes) {
-        this.likes = likes;
-    }
-
     //cons
 
-    public Comentario(Publicacion publicacion, Usuario usuario, String texto, LocalDateTime hora, HashSet<Usuario> likes) {
+    public Comentario(Publicacion publicacion, Usuario usuario, String texto, LocalDateTime hora) {
         this.publicacion = publicacion;
         this.usuario = usuario;
         this.texto = texto;
         this.hora = hora;
-        this.likes = likes;
+        likes = new HashSet<>();
     }
 
     //methods
-    
+    public boolean anadirLike(Usuario usuario) {
+        return likes.add(new Like(usuario));
+    }
+
+    public boolean eliminarLike(Usuario usuario) {
+        return likes.remove(new Like(usuario));
+    }
+
+    public int cantidadLikes() {
+        return likes.size();
+    }
 }

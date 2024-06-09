@@ -2,6 +2,8 @@ package Usuarios.Clases.Mascotas.Concretas;
 
 import java.time.LocalDate;
 
+import javax.management.InvalidAttributeValueException;
+
 import Usuarios.Clases.Mascotas.Abstracta.Mascota;
 
 public class Perro extends Mascota {
@@ -31,7 +33,7 @@ public class Perro extends Mascota {
     //cons
 
     public Perro(String nombre, LocalDate fechaNacimiento, char sexo, String raza, String jugueteFavorito,
-            String comidaFavorita) {
+            String comidaFavorita) throws InvalidAttributeValueException {
         super(nombre, fechaNacimiento, sexo);
         this.raza = raza;
         this.jugueteFavorito = jugueteFavorito;

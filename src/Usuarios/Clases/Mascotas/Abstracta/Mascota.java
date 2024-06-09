@@ -54,12 +54,12 @@ public abstract class Mascota {
 
     //methods
 
-   public int calcularEdad(){
-    LocalDate hoy = LocalDate.now();
-    int edad = 0;
-    edad = (hoy.getYear() - (fechaNacimiento.getYear()));
-    return edad;
-   }
+    public int calcularEdad(){
+        LocalDate hoy = LocalDate.now();
+        int edad = 0;
+        edad = (hoy.getYear() - (fechaNacimiento.getYear()));
+        return edad;
+    }
 
     
 

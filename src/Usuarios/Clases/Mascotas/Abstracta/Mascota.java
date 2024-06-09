@@ -19,13 +19,14 @@ public abstract class Mascota {
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+    public void setFechaNacimiento(LocalDate fechaNacimiento) throws InvalidAttributeValueException {
         this.fechaNacimiento = fechaNacimiento;
+        setEdad(calcularEdad());
     }
     public int getEdad() {
         return edad;
     }
-    public void setEdad(int edad) throws InvalidAttributeValueException {
+    private void setEdad(int edad) throws InvalidAttributeValueException {
         if (edad < 0) {
             throw new InvalidAttributeValueException("La edad no puede ser menor a 0");
         }

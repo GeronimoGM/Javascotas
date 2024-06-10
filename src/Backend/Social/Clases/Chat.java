@@ -1,8 +1,8 @@
-package Social.Clases;
+package Backend.Social.Clases;
 
 import java.util.LinkedList;
 
-import Usuarios.Clases.Usuario;
+import Backend.Usuarios.Clases.Usuario;
 
 public class Chat {
     private Usuario usuarioA;

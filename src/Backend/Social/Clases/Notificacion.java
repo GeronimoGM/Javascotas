@@ -1,6 +1,6 @@
-package Social.Clases;
+package Backend.Social.Clases;
 
-import Social.Interfaces.Notificadora;
+import Backend.Social.Interfaces.Notificadora;
 
 public class Notificacion<T extends Notificadora<T>> {
     public T notificacion;

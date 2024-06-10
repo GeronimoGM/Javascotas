@@ -1,9 +1,9 @@
-package Social.Clases;
+package Backend.Social.Clases;
 
 import java.time.LocalDateTime;
 
-import Social.Interfaces.Notificadora;
-import Usuarios.Clases.Usuario;
+import Backend.Social.Interfaces.Notificadora;
+import Backend.Usuarios.Clases.Usuario;
 
 public class Mensaje implements Notificadora<Mensaje> {
     private LocalDateTime hora;

@@ -1,12 +1,12 @@
-package Social.Clases;
+package Backend.Social.Clases;
 
 import java.io.File;
 import java.util.HashSet;
 import java.util.TreeSet;
 
-import Social.Interfaces.Likeable;
-import Usuarios.Clases.Usuario;
-import Usuarios.Clases.Mascotas.Abstracta.Mascota;
+import Backend.Social.Interfaces.Likeable;
+import Backend.Usuarios.Clases.Usuario;
+import Backend.Usuarios.Clases.Mascotas.Abstracta.Mascota;
 
 public class Publicacion implements Likeable {
     private Mascota mascota;

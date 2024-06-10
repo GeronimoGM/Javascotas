@@ -1,6 +1,6 @@
-package Social.Interfaces;
+package Backend.Social.Interfaces;
 
-import Usuarios.Clases.Usuario;
+import Backend.Usuarios.Clases.Usuario;
 
 public interface Likeable {
     public int cantidadLikes();

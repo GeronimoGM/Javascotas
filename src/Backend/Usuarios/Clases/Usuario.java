@@ -1,4 +1,4 @@
-package Usuarios.Clases;
+package Backend.Usuarios.Clases;
 
 import java.io.File;
 import java.time.LocalDate;
@@ -8,12 +8,12 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
-import Social.Clases.Chat;
-import Social.Clases.Comentario;
-import Social.Clases.Mensaje;
-import Social.Clases.Notificacion;
-import Social.Clases.Publicacion;
-import Usuarios.Clases.Mascotas.Abstracta.Mascota;
+import Backend.Social.Clases.Chat;
+import Backend.Social.Clases.Comentario;
+import Backend.Social.Clases.Mensaje;
+import Backend.Social.Clases.Notificacion;
+import Backend.Social.Clases.Publicacion;
+import Backend.Usuarios.Clases.Mascotas.Abstracta.Mascota;
 
 public class Usuario {
     private String username;
@@ -181,5 +181,5 @@ public class Usuario {
         return aux;
     }
 
-    
+    // TODO: hacer función de calcular edad y eliminar la edad del constructor, así como el setter
 }

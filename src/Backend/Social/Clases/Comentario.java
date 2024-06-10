@@ -1,11 +1,11 @@
-package Social.Clases;
+package Backend.Social.Clases;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
 
-import Social.Interfaces.Likeable;
-import Social.Interfaces.Notificadora;
-import Usuarios.Clases.Usuario;
+import Backend.Social.Interfaces.Likeable;
+import Backend.Social.Interfaces.Notificadora;
+import Backend.Usuarios.Clases.Usuario;
 
 public class Comentario implements Notificadora<Comentario>, Likeable, Comparable<Comentario> {
     private Usuario usuario;
@@ -63,4 +63,6 @@ public class Comentario implements Notificadora<Comentario>, Likeable, Comparabl
         usuario.anadirNotificacion(new Notificacion<Comentario>(this));
         return usuario;
     }
+
+    // TODO: arreglar bug (comentarios con mismos likes los toma como iguales)
 }

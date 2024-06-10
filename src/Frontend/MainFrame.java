@@ -1,5 +1,6 @@
 package Frontend;
 
+import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -24,6 +25,7 @@ public class MainFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800, 600);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setLayout(new CardLayout());
         
         // Pagina principal
         paginaPrincipal = new JPanel();
@@ -37,6 +39,7 @@ public class MainFrame extends JFrame {
         iniciarSesion = new JButton("Iniciar sesión");
         iniciarSesion.setAlignmentX(Component.CENTER_ALIGNMENT);
         iniciarSesion.setFocusPainted(false);
+        iniciarSesion.addActionListener(e -> showPanel("paginaInicioSesion"));
 
         registrarse = new JButton("Registrarse");
         registrarse.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -50,9 +53,14 @@ public class MainFrame extends JFrame {
         paginaPrincipal.add(registrarse);
         paginaPrincipal.add(Box.createVerticalGlue());
 
-        this.add(paginaPrincipal);
+        this.add(paginaPrincipal, "paginaPrincipal");
 
         // Mostrar ventana
         this.setVisible(true);
+    }
+
+    public void showPanel(String panelName) {
+        CardLayout layout = (CardLayout) getContentPane().getLayout();
+        layout.show(getContentPane(), panelName);
     }
 }

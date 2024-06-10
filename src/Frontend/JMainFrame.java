@@ -4,12 +4,13 @@ import java.awt.CardLayout;
 
 import javax.swing.JFrame;
 
+import Frontend.Paginas.JPaginaInicioSesion;
 import Frontend.Paginas.JPaginaPrincipal;
 
 public class JMainFrame extends JFrame {
-    // Pagina inicial (lo primero que ves al abrir)
     private JPaginaPrincipal paginaPrincipal;
-    
+    private JPaginaInicioSesion paginaInicioSesion;    
+
     public JMainFrame(String title) {
         // Ventana
         super(title);
@@ -18,10 +19,11 @@ public class JMainFrame extends JFrame {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setLayout(new CardLayout());
         
-        // Pagina principal
         paginaPrincipal = new JPaginaPrincipal(this);
-
+        paginaInicioSesion = new JPaginaInicioSesion(this);
+        
         this.add(paginaPrincipal, "paginaPrincipal");
+        this.add(paginaInicioSesion, "paginaInicioSesion");
 
         // Mostrar ventana
         this.setVisible(true);

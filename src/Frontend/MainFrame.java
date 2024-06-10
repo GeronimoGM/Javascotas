@@ -12,8 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class MainFrame extends JFrame {
-    private JPanel panel;
     // Pagina inicial (lo primero que ves al abrir)
+    private JPanel paginaPrincipal;
     private JLabel titulo;
     private JButton iniciarSesion;
     private JButton registrarse;
@@ -26,9 +26,9 @@ public class MainFrame extends JFrame {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         
         // Pagina principal
-        panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        panel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        paginaPrincipal = new JPanel();
+        paginaPrincipal.setLayout(new BoxLayout(paginaPrincipal, BoxLayout.Y_AXIS));
+        paginaPrincipal.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         titulo = new JLabel("Javascotas");
         titulo.setFont(new Font("Arial", Font.BOLD, 24));
@@ -42,15 +42,15 @@ public class MainFrame extends JFrame {
         registrarse.setAlignmentX(Component.CENTER_ALIGNMENT);
         registrarse.setFocusPainted(false);
 
-        panel.add(Box.createVerticalGlue());
-        panel.add(titulo);
-        panel.add(Box.createRigidArea(new Dimension(0, 100)));
-        panel.add(iniciarSesion);
-        panel.add(Box.createRigidArea(new Dimension(0, 25)));
-        panel.add(registrarse);
-        panel.add(Box.createVerticalGlue());
+        paginaPrincipal.add(Box.createVerticalGlue());
+        paginaPrincipal.add(titulo);
+        paginaPrincipal.add(Box.createRigidArea(new Dimension(0, 100)));
+        paginaPrincipal.add(iniciarSesion);
+        paginaPrincipal.add(Box.createRigidArea(new Dimension(0, 25)));
+        paginaPrincipal.add(registrarse);
+        paginaPrincipal.add(Box.createVerticalGlue());
 
-        this.add(panel);
+        this.add(paginaPrincipal);
 
         // Mostrar ventana
         this.setVisible(true);

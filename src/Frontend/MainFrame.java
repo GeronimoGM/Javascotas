@@ -1,0 +1,58 @@
+package Frontend;
+
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
+
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class MainFrame extends JFrame {
+    private JPanel panel;
+    // Pagina inicial (lo primero que ves al abrir)
+    private JLabel titulo;
+    private JButton iniciarSesion;
+    private JButton registrarse;
+    
+    public MainFrame(String title) {
+        // Ventana
+        super(title);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(800, 600);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
+        // Pagina principal
+        panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        titulo = new JLabel("Javascotas");
+        titulo.setFont(new Font("Arial", Font.BOLD, 24));
+        titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        iniciarSesion = new JButton("Iniciar sesión");
+        iniciarSesion.setAlignmentX(Component.CENTER_ALIGNMENT);
+        iniciarSesion.setFocusPainted(false);
+
+        registrarse = new JButton("Registrarse");
+        registrarse.setAlignmentX(Component.CENTER_ALIGNMENT);
+        registrarse.setFocusPainted(false);
+
+        panel.add(Box.createVerticalGlue());
+        panel.add(titulo);
+        panel.add(Box.createRigidArea(new Dimension(0, 100)));
+        panel.add(iniciarSesion);
+        panel.add(Box.createRigidArea(new Dimension(0, 25)));
+        panel.add(registrarse);
+        panel.add(Box.createVerticalGlue());
+
+        this.add(panel);
+
+        // Mostrar ventana
+        this.setVisible(true);
+    }
+}

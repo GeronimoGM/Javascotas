@@ -12,14 +12,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class MainFrame extends JFrame {
+public class JMainFrame extends JFrame {
     // Pagina inicial (lo primero que ves al abrir)
     private JPanel paginaPrincipal;
     private JLabel titulo;
     private JButton iniciarSesion;
     private JButton registrarse;
     
-    public MainFrame(String title) {
+    public JMainFrame(String title) {
         // Ventana
         super(title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

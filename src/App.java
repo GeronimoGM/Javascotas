@@ -1,7 +1,7 @@
-import Frontend.MainFrame;
+import Frontend.JMainFrame;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        new MainFrame("Javascotas");
+        new JMainFrame("Javascotas");
     }
 }

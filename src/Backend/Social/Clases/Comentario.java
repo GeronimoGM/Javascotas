@@ -21,6 +21,9 @@ public class Comentario implements Notificadora<Comentario>, Likeable, Comparabl
         hora = LocalDateTime.now();
         likes = new HashSet<>();
     }
+    Comentario(UUID id) {
+        this.id = id;
+    }
     // Getters y setters
     public UUID getId() {
         return id;

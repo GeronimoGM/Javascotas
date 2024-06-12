@@ -79,6 +79,19 @@ public class Publicacion implements Likeable {
         comentarios.add(comentario);
     }
 
+    public Comentario getComentario(UUID id) {
+        var it = comentarios.iterator();
+
+        while (it.hasNext()) {
+            Comentario aux = it.next();
+            if (aux.equals(new Comentario(id))) {
+                return aux;
+            }
+        }
+
+        return null;
+    }
+
     public boolean eliminarComentario(Comentario comentario) {
         if (comentarios.remove(comentario)) {
             return true;

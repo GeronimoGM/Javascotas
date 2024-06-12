@@ -12,7 +12,4 @@ public class Notificacion<T extends Notificadora<T>> {
     public T getNotificacion() {
         return notificacion;
     }
-    public void setNotificacion(T notificacion) {
-        this.notificacion = notificacion;
-    }
 }

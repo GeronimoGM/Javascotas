@@ -5,21 +5,20 @@ import Backend.Usuarios.Clases.Usuario;
 
 public class Like implements Notificadora<Like> {
     private Usuario usuario;
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    // cons
-
+    // Constructores
     public Like(Usuario usuario) {
         this.usuario = usuario;
     }
-
+    // Getters y setters
+    public Usuario getUsuario() {
+        return usuario;
+    }
+    // Métodos
+    @Override
+    public Usuario notificar(Usuario usuario) {
+        usuario.anadirNotificacion(new Notificacion<Like>(this));
+        return usuario;
+    }
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -27,7 +26,6 @@ public class Like implements Notificadora<Like> {
         result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
         return result;
     }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -44,13 +42,4 @@ public class Like implements Notificadora<Like> {
             return false;
         return true;
     }
-
-    //methods
-    
-    @Override
-    public Usuario notificar(Usuario usuario) {
-        usuario.anadirNotificacion(new Notificacion<Like>(this));
-        return usuario;
-    }
-    
 }

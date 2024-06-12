@@ -16,7 +16,16 @@ public class Publicacion implements Likeable {
     private String descripcion;
     private TreeSet<Comentario> comentarios;
     private HashSet<Like> likes;
-
+    // Constructores
+    public Publicacion(Mascota mascota, File foto, String descripcion) {
+        id = UUID.randomUUID();
+        this.mascota = mascota;
+        this.foto = foto;
+        this.descripcion = descripcion;
+        comentarios = new TreeSet<>();
+        likes = new HashSet<>();
+    }
+    // Getters y setters
     public UUID getId() {
         return id;
     }
@@ -50,19 +59,7 @@ public class Publicacion implements Likeable {
     public void setLike(HashSet<Like> likes) {
         this.likes = likes;
     }
-
-    //cons
-
-    public Publicacion(Mascota mascota, File foto, String descripcion) {
-        id = UUID.randomUUID();
-        this.mascota = mascota;
-        this.foto = foto;
-        this.descripcion = descripcion;
-        comentarios = new TreeSet<>();
-        likes = new HashSet<>();
-    }
-    
-    //methods
+    // Métodos
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -91,11 +88,11 @@ public class Publicacion implements Likeable {
     public void likear(Usuario usuario) {
         likes.add(new Like(usuario));
     }
-
+    @Override
     public void unlikear(Usuario usuario) {
         likes.remove(new Like(usuario));
     }
-
+    @Override
     public int cantidadLikes() {
         return likes.size();
     }

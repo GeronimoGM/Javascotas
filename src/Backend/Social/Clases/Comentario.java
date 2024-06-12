@@ -14,7 +14,15 @@ public class Comentario implements Notificadora<Comentario>, Likeable, Comparabl
     private String texto;
     private LocalDateTime hora;
     private HashSet<Like> likes;
-
+    // Constructores
+    public Comentario(Usuario usuario, String texto) {
+        id = UUID.randomUUID();
+        this.usuario = usuario;
+        this.texto = texto;
+        hora = LocalDateTime.now();
+        likes = new HashSet<>();
+    }
+    // Getters y setters
     public UUID getId() {
         return id;
     }
@@ -36,17 +44,7 @@ public class Comentario implements Notificadora<Comentario>, Likeable, Comparabl
     public HashSet<Like> getLikes() {
         return likes;
     }
-    //cons
-
-    public Comentario(Usuario usuario, String texto) {
-        id = UUID.randomUUID();
-        this.usuario = usuario;
-        this.texto = texto;
-        hora = LocalDateTime.now();
-        likes = new HashSet<>();
-    }
-
-    //methods
+    // Métodos
     public void likear(Usuario usuario) {
         likes.add(new Like(usuario));
     }

@@ -10,7 +10,15 @@ public class Gato extends Mascota {
     private String raza;
     private String jugueteFavorito;
     private String comidaFavorita;
-    
+    // Constructores
+    public Gato(String nombre, LocalDate fechaNacimiento, char sexo, String raza, String jugueteFavorito,
+            String comidaFavorita) throws InvalidAttributeValueException {
+        super(nombre, fechaNacimiento, sexo);
+        this.raza = raza;
+        this.jugueteFavorito = jugueteFavorito;
+        this.comidaFavorita = comidaFavorita;
+    }
+    // Getters y setters
     public String getRaza() {
         return raza;
     }
@@ -29,22 +37,4 @@ public class Gato extends Mascota {
     public void setComidaFavorita(String comidaFavorita) {
         this.comidaFavorita = comidaFavorita;
     }
-
-    //cons
-
-    public Gato(String nombre, LocalDate fechaNacimiento, char sexo, String raza, String jugueteFavorito,
-            String comidaFavorita) throws InvalidAttributeValueException {
-        super(nombre, fechaNacimiento, sexo);
-        this.raza = raza;
-        this.jugueteFavorito = jugueteFavorito;
-        this.comidaFavorita = comidaFavorita;
-    }
-
-    //methods
-
-    
-
-
-    
-
 }

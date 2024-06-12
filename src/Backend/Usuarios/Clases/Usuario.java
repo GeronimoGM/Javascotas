@@ -8,6 +8,8 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
+import javax.management.InvalidAttributeValueException;
+
 import Backend.Social.Clases.Chat;
 import Backend.Social.Clases.Comentario;
 import Backend.Social.Clases.Mensaje;
@@ -30,13 +32,13 @@ public class Usuario {
     private HashSet<Usuario> bloqueados;
 
     // Constructores
-    public Usuario(String username, String nombre, String contrasena, LocalDate fechaDeNacimiento, int edad, File foto,
-            char sexo) {
+    public Usuario(String username, String nombre, String contrasena, LocalDate fechaDeNacimiento, File foto,
+            char sexo) throws InvalidAttributeValueException {
         this.username = username;
         this.nombre = nombre;
         this.contrasena = contrasena;
         this.fechaDeNacimiento = fechaDeNacimiento;
-        this.edad = edad;
+        setEdad(calcularEdad());
         this.foto = foto;
         this.sexo = sexo;
         mascotas = new ArrayList<>();
@@ -74,16 +76,22 @@ public class Usuario {
         return fechaDeNacimiento;
     }
 
-    public void setFechaDeNacimiento(LocalDate fechaDeNacimiento) {
-        this.fechaDeNacimiento = fechaDeNacimiento;
-    }
-
     public int getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setFechaNacimiento(LocalDate fechaDeNacimiento) throws InvalidAttributeValueException {
+        this.fechaDeNacimiento = fechaDeNacimiento;
+        setEdad(calcularEdad());
+    }
+
+    private void setEdad(int edad) throws InvalidAttributeValueException {
+        if (edad < 0) {
+            throw new InvalidAttributeValueException("La edad no puede ser menor a 0");
+        }
+        else {
+            this.edad = edad;
+        }
     }
 
     public File getFoto() {
@@ -181,5 +189,10 @@ public class Usuario {
         return aux;
     }
 
-    // TODO: hacer función de calcular edad y eliminar la edad del constructor, así como el setter
+    public int calcularEdad(){
+        LocalDate hoy = LocalDate.now();
+        int edad = 0;
+        edad = (hoy.getYear() - (fechaDeNacimiento.getYear()));
+        return edad;
+    }
 }

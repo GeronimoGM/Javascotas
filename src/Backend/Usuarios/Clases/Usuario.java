@@ -111,6 +111,7 @@ public class Usuario {
         if (chat == null) {
             chat  = new Chat(this.getUsername(), usuario);
             chats.put(usuario.getUsername(), chat);
+            usuario.abrirChat(usuario);
         }
         return chat;
     }

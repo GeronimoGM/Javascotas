@@ -123,7 +123,7 @@ public class Usuario {
         chat.anadirMensaje(mensaje);
     }
     
-    public void anadirNotificacion(Notificacion<?> notificacion) {
+    void anadirNotificacion(Notificacion<?> notificacion) {
         notificaciones.add(notificacion);
     }
 

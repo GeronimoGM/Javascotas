@@ -6,25 +6,32 @@ import javax.management.InvalidAttributeValueException;
 
 public abstract class Mascota {
     private String nombre;
-    private LocalDate fechaNacimiento;
+    private LocalDate fechaDeNacimiento;
+    @SuppressWarnings("unused")
     private int edad;
     private char sexo;
-
+    // Constructores
+    public Mascota(String nombre, LocalDate fechaDeNacimiento, char sexo) throws InvalidAttributeValueException {
+        this.nombre = nombre;
+        setFechaDeNacimiento(fechaDeNacimiento);
+        setSexo(sexo);
+    }
+    // Getters y setters
     public String getNombre() {
         return nombre;
     }
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
+    public LocalDate getFechaDeNacimiento() {
+        return fechaDeNacimiento;
     }
-    public void setFechaNacimiento(LocalDate fechaNacimiento) throws InvalidAttributeValueException {
-        this.fechaNacimiento = fechaNacimiento;
-        setEdad(calcularEdad());
+    public void setFechaDeNacimiento(LocalDate fechaDeNacimiento) throws InvalidAttributeValueException {
+        this.fechaDeNacimiento = fechaDeNacimiento;
+        setEdad(getEdad());
     }
     public int getEdad() {
-        return edad;
+        return LocalDate.now().getYear() - fechaDeNacimiento.getYear();
     }
     private void setEdad(int edad) throws InvalidAttributeValueException {
         if (edad < 0) {
@@ -43,25 +50,4 @@ public abstract class Mascota {
             throw new InvalidAttributeValueException("El sexo solo puede ser femenino(f) o masculino(m)");
         }
     }
-
-    //cons
-
-    public Mascota(String nombre, LocalDate fechaNacimiento, char sexo) throws InvalidAttributeValueException {
-        this.nombre = nombre;
-        this.fechaNacimiento = fechaNacimiento;
-        setEdad(calcularEdad());
-        setSexo(sexo);
-    }
-
-    //methods
-
-    public int calcularEdad(){
-        LocalDate hoy = LocalDate.now();
-        int edad = 0;
-        edad = (hoy.getYear() - (fechaNacimiento.getYear()));
-        return edad;
-    }
-
-    
-
 }

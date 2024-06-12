@@ -19,6 +19,7 @@ public class Usuario {
     private String nombre;
     private String contrasena;
     private LocalDate fechaDeNacimiento;
+    @SuppressWarnings("unused")
     private int edad;
     private File foto;
     private char sexo;
@@ -112,6 +113,10 @@ public class Usuario {
             }
         }
         return eliminado;
+    }
+
+    public void anadirMascota(Mascota mascota) throws InvalidAttributeValueException {
+        mascotas.add(mascota);
     }
 
     public Chat abrirChat(Usuario usuario) {

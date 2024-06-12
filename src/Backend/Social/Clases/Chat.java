@@ -5,47 +5,29 @@ import java.util.LinkedList;
 import Backend.Usuarios.Clases.Usuario;
 
 public class Chat {
-    private Usuario usuarioA;
-    private Usuario usuarioB;
+    private String emisor;
+    private Usuario receptor;
     private LinkedList<Mensaje> mensajes;
-
-    public Usuario getUsuarioA() {
-        return usuarioA;
+    // Constructores
+    public Chat(String emisor, Usuario receptor) {
+        this.emisor = emisor;
+        this.receptor = receptor;
+        this.mensajes = new LinkedList<>();
     }
-    public void setUsuarioA(Usuario usuarioA) {
-        this.usuarioA = usuarioA;
+    // Getters y setters
+    public String getEmisor() {
+        return emisor;
     }
-    public Usuario getUsuarioB() {
-        return usuarioB;
-    }
-    public void setUsuarioB(Usuario usuarioB) {
-        this.usuarioB = usuarioB;
+    public Usuario getReceptor() {
+        return receptor;
     }
     public LinkedList<Mensaje> getMensajes() {
         return mensajes;
     }
-    public void setMensajes(LinkedList<Mensaje> mensajes) {
-        this.mensajes = mensajes;
+    // Métodos
+    public void enviarMensaje(String texto) {
+        Mensaje mensaje = new Mensaje(receptor.getUsername(), texto);
+        mensajes.add(mensaje);
+        mensaje.notificar(receptor);
     }
-
-    //cons
-
-    public Chat(Usuario usuarioA, Usuario usuarioB) {
-        this.usuarioA = usuarioA;
-        this.usuarioB = usuarioB;
-        mensajes = new LinkedList<>();
-    }
-
-    public Chat(Usuario usuarioA, Usuario usuarioB, LinkedList<Mensaje> mensajes) {
-        this.usuarioA = usuarioA;
-        this.usuarioB = usuarioB;
-        this.mensajes = mensajes;
-    }
-
-    //methods
-
-    public void enviarMensaje(String mensaje) {
-        mensajes.add(new Mensaje(mensaje, usuarioA));
-    }
-
 }

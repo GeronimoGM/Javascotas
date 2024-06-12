@@ -6,36 +6,26 @@ import Backend.Social.Interfaces.Notificadora;
 import Backend.Usuarios.Clases.Usuario;
 
 public class Mensaje implements Notificadora<Mensaje> {
-    private LocalDateTime hora;
+    private String username;
     private String texto;
-    private Usuario usuario;
-    
-    public LocalDateTime getHora() {
-        return hora;
+    private LocalDateTime hora;
+    // Constructores
+    public Mensaje(String username, String texto) {
+        this.username = username;
+        this.texto = texto;
+        this.hora = LocalDateTime.now();
     }
+    // Getters y setters
     public String getTexto() {
         return texto;
     }
-    public void setTexto(String texto) {
-        this.texto = texto;
+    public String getUsername() {
+        return username;
     }
-    public Usuario getUsuario() {
-        return usuario;
+    public LocalDateTime getHora() {
+        return hora;
     }
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    //cons
-
-    public Mensaje(String texto, Usuario usuario) {
-        hora = LocalDateTime.now();
-        this.texto = texto;
-        this.usuario = usuario;
-    }
-    
-    //methods
-    
+    // Métodos
     @Override
     public Usuario notificar(Usuario usuario) {
         usuario.anadirNotificacion(new Notificacion<Mensaje>(this));

@@ -144,10 +144,8 @@ public class Usuario {
         return true;
     }
 
-    public LinkedHashSet <Publicacion> publicar(Publicacion publicacion){
-
+    public void publicar(Publicacion publicacion){
         publicaciones.add(publicacion);
-        return publicaciones;
     }
 
     public boolean eliminarPublicacion(Publicacion publicacion){

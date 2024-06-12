@@ -118,7 +118,7 @@ public class Usuario {
         return chat;
     }
 
-    public void anadirMensajeRecibido(String username, Mensaje mensaje) {
+    void anadirMensajeRecibido(String username, Mensaje mensaje) {
         Chat chat = abrirChat(username);
         chat.anadirMensaje(mensaje);
     }

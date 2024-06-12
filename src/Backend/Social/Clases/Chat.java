@@ -30,7 +30,7 @@ public class Chat {
         mensaje.notificar(receptor);
     }
 
-    public void anadirMensaje(Mensaje mensaje) {
+    void anadirMensaje(Mensaje mensaje) {
         mensajes.add(mensaje);
     }
 }

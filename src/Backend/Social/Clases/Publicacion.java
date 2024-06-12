@@ -1,6 +1,7 @@
 package Backend.Social.Clases;
 
 import java.io.File;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.TreeSet;
 import java.util.UUID;
@@ -10,6 +11,7 @@ import Backend.Social.Interfaces.Likeable;
 
 public class Publicacion implements Likeable {
     private UUID id;
+    private LocalDateTime hora;
     private Mascota mascota;
     private File foto;
     private String descripcion;
@@ -18,6 +20,7 @@ public class Publicacion implements Likeable {
     // Constructores
     public Publicacion(Mascota mascota, File foto, String descripcion) {
         id = UUID.randomUUID();
+        this.hora = LocalDateTime.now();
         this.mascota = mascota;
         this.foto = foto;
         this.descripcion = descripcion;
@@ -30,6 +33,9 @@ public class Publicacion implements Likeable {
     // Getters y setters
     public UUID getId() {
         return id;
+    }
+    public LocalDateTime getHora() {
+        return hora;
     }
     public Mascota getMascota() {
         return mascota;

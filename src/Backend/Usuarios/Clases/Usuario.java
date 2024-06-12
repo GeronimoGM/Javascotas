@@ -24,7 +24,7 @@ public class Usuario {
     private char sexo;
     private LinkedHashSet<Publicacion> publicaciones;
     private ArrayList<Mascota> mascotas;
-    private HashMap<String, Chat> chats;
+    public HashMap<String, Chat> chats; // TODO: cambiar a private
     private LinkedHashSet<Notificacion<?>> notificaciones;
     // Constructores
     public Usuario(String username, String nombre, String contrasena, LocalDate fechaDeNacimiento, File foto,
@@ -111,7 +111,7 @@ public class Usuario {
         if (chat == null) {
             chat  = new Chat(this.getUsername(), usuario);
             chats.put(usuario.getUsername(), chat);
-            usuario.abrirChat(usuario);
+            usuario.abrirChat(this);
         }
         return chat;
     }

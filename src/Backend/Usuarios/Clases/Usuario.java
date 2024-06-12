@@ -89,15 +89,7 @@ public class Usuario {
     public void setSexo(char sexo) {
         this.sexo = sexo;
     }
-    // Métodos
-    public void anadirNotificacion(Notificacion<?> notificacion) {
-        notificaciones.add(notificacion);
-    }
-
-    public void limpiarNotificaciones() {
-        notificaciones = new LinkedHashSet<>();
-    }
-    
+    // Métodos    
     public void publicar(Publicacion publicacion) {
         publicaciones.add(publicacion);
     }
@@ -126,6 +118,14 @@ public class Usuario {
             chats.put(usuario.getUsername(), chat);
         }
         return chat;
+    }
+    
+    public void anadirNotificacion(Notificacion<?> notificacion) {
+        notificaciones.add(notificacion);
+    }
+
+    public void limpiarNotificaciones() {
+        notificaciones = new LinkedHashSet<>();
     }
 
     @Override

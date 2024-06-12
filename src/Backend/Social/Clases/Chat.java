@@ -28,6 +28,11 @@ public class Chat {
     public void enviarMensaje(String texto) {
         Mensaje mensaje = new Mensaje(receptor.getUsername(), texto);
         mensajes.add(mensaje);
+        receptor.anadirMensajeRecibido(emisor, mensaje);
         mensaje.notificar(receptor);
+    }
+
+    public void anadirMensaje(Mensaje mensaje) {
+        mensajes.add(mensaje);
     }
 }

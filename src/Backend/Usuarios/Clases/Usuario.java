@@ -9,6 +9,7 @@ import java.util.LinkedHashSet;
 import javax.management.InvalidAttributeValueException;
 
 import Backend.Social.Clases.Chat;
+import Backend.Social.Clases.Mensaje;
 import Backend.Social.Clases.Notificacion;
 import Backend.Social.Clases.Publicacion;
 import Backend.Usuarios.Clases.Mascotas.Abstracta.Mascota;
@@ -24,7 +25,7 @@ public class Usuario {
     private char sexo;
     private LinkedHashSet<Publicacion> publicaciones;
     private ArrayList<Mascota> mascotas;
-    public HashMap<String, Chat> chats; // TODO: cambiar a private
+    private HashMap<String, Chat> chats;
     private LinkedHashSet<Notificacion<?>> notificaciones;
     // Constructores
     public Usuario(String username, String nombre, String contrasena, LocalDate fechaDeNacimiento, File foto,
@@ -114,6 +115,16 @@ public class Usuario {
             usuario.abrirChat(this);
         }
         return chat;
+    }
+
+    private Chat abrirChat(String username) {
+        Chat chat = chats.get(username);
+        return chat;
+    }
+
+    public void anadirMensajeRecibido(String username, Mensaje mensaje) {
+        Chat chat = abrirChat(username);
+        chat.anadirMensaje(mensaje);
     }
     
     public void anadirNotificacion(Notificacion<?> notificacion) {

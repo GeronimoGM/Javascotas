@@ -1,17 +1,17 @@
-package Backend.Usuarios.Clases.Mascotas.Concretas;
+package Backend.Mascotas.Clases.Concretas;
 
 import java.time.LocalDate;
 
 import javax.management.InvalidAttributeValueException;
 
-import Backend.Usuarios.Clases.Mascotas.Abstracta.Mascota;
+import Backend.Mascotas.Clases.Abstracta.Mascota;
 
-public class Gato extends Mascota {
+public class Perro extends Mascota {
     private String raza;
     private String jugueteFavorito;
     private String comidaFavorita;
     // Constructores
-    public Gato(String nombre, LocalDate fechaNacimiento, char sexo, String raza, String jugueteFavorito,
+    public Perro(String nombre, LocalDate fechaNacimiento, char sexo, String raza, String jugueteFavorito,
             String comidaFavorita) throws InvalidAttributeValueException {
         super(nombre, fechaNacimiento, sexo);
         this.raza = raza;

@@ -5,9 +5,8 @@ import java.util.HashSet;
 import java.util.TreeSet;
 import java.util.UUID;
 
+import Backend.Mascotas.Clases.Abstracta.Mascota;
 import Backend.Social.Interfaces.Likeable;
-import Backend.Usuarios.Clases.Usuario;
-import Backend.Usuarios.Clases.Mascotas.Abstracta.Mascota;
 
 public class Publicacion implements Likeable {
     private UUID id;

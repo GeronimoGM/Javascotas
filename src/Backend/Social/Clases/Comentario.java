@@ -6,7 +6,6 @@ import java.util.UUID;
 
 import Backend.Social.Interfaces.Likeable;
 import Backend.Social.Interfaces.Notificadora;
-import Backend.Usuarios.Clases.Usuario;
 
 public class Comentario implements Notificadora<Comentario>, Likeable, Comparable<Comentario> {
     private UUID id;

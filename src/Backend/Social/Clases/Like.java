@@ -1,7 +1,6 @@
 package Backend.Social.Clases;
 
 import Backend.Social.Interfaces.Notificadora;
-import Backend.Usuarios.Clases.Usuario;
 
 public class Like implements Notificadora<Like> {
     private Usuario usuario;

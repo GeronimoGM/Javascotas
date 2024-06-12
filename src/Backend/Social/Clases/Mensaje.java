@@ -3,7 +3,6 @@ package Backend.Social.Clases;
 import java.time.LocalDateTime;
 
 import Backend.Social.Interfaces.Notificadora;
-import Backend.Usuarios.Clases.Usuario;
 
 public class Mensaje implements Notificadora<Mensaje> {
     private String username;

@@ -2,8 +2,6 @@ package Backend.Social.Clases;
 
 import java.util.LinkedList;
 
-import Backend.Usuarios.Clases.Usuario;
-
 public class Chat {
     private String emisor;
     private Usuario receptor;

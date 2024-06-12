@@ -1,4 +1,4 @@
-package Backend.Usuarios.Clases;
+package Backend.Social.Clases;
 
 import java.io.File;
 import java.time.LocalDate;
@@ -8,11 +8,7 @@ import java.util.LinkedHashSet;
 
 import javax.management.InvalidAttributeValueException;
 
-import Backend.Social.Clases.Chat;
-import Backend.Social.Clases.Mensaje;
-import Backend.Social.Clases.Notificacion;
-import Backend.Social.Clases.Publicacion;
-import Backend.Usuarios.Clases.Mascotas.Abstracta.Mascota;
+import Backend.Mascotas.Clases.Abstracta.Mascota;
 
 public class Usuario {
     private String username;

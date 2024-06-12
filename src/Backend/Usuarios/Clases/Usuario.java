@@ -29,7 +29,6 @@ public class Usuario {
     private ArrayList<Mascota> mascotas;
     private LinkedList<Chat> chats;
     private LinkedHashSet<Notificacion<?>> notificaciones;
-    private HashSet<Usuario> bloqueados;
 
     // Constructores
     public Usuario(String username, String nombre, String contrasena, LocalDate fechaDeNacimiento, File foto,
@@ -44,7 +43,6 @@ public class Usuario {
         mascotas = new ArrayList<>();
         chats = new LinkedList<>();
         notificaciones = new LinkedHashSet<>();
-        bloqueados = new HashSet<>();
     }
 
     // Getters y setters

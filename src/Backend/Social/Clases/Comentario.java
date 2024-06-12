@@ -53,7 +53,7 @@ public class Comentario implements Notificadora<Comentario>, Likeable, Comparabl
         likes.remove(new Like(usuario));
     }
 
-    public int cantidadLikes() {
+    public int getCantidadLikes() {
         return likes.size();
     }
     
@@ -84,7 +84,7 @@ public class Comentario implements Notificadora<Comentario>, Likeable, Comparabl
     
     @Override
     public int compareTo(Comentario o) {
-        int res = Integer.compare(this.cantidadLikes(), o.cantidadLikes());
+        int res = Integer.compare(this.getCantidadLikes(), o.getCantidadLikes());
 
         if (res == 0) {
             if (this.equals(o)) {

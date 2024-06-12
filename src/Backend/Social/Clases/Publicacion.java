@@ -93,7 +93,7 @@ public class Publicacion implements Likeable {
         likes.remove(new Like(usuario));
     }
     @Override
-    public int cantidadLikes() {
+    public int getCantidadLikes() {
         return likes.size();
     }
     

@@ -3,7 +3,7 @@ package Backend.Social.Interfaces;
 import Backend.Usuarios.Clases.Usuario;
 
 public interface Likeable {
-    public int cantidadLikes();
+    public int getCantidadLikes();
     public void likear(Usuario usuario);
     public void unlikear(Usuario usuario);
 }

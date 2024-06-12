@@ -6,12 +6,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.LinkedList;
 
 import javax.management.InvalidAttributeValueException;
 
 import Backend.Social.Clases.Chat;
-import Backend.Social.Clases.Comentario;
 import Backend.Social.Clases.Notificacion;
 import Backend.Social.Clases.Publicacion;
 import Backend.Usuarios.Clases.Mascotas.Abstracta.Mascota;
@@ -24,7 +22,7 @@ public class Usuario {
     private int edad;
     private File foto;
     private char sexo;
-    private LinkedHashSet <Publicacion> publicaciones;
+    private LinkedHashSet<Publicacion> publicaciones;
     private ArrayList<Mascota> mascotas;
     private HashMap<String, Chat> chats;
     private LinkedHashSet<Notificacion<?>> notificaciones;

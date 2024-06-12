@@ -75,7 +75,12 @@ public class Publicacion implements Likeable {
         comentarios.add(comentario);
     }
 
-    public void eliminarComentario(Comentario comentario) {
-        comentarios.add(comentario);
+    public boolean eliminarComentario(Comentario comentario) {
+        if (comentarios.remove(comentario)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

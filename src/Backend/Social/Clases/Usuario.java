@@ -32,6 +32,7 @@ public class Usuario {
         setFechaNacimiento(fechaDeNacimiento);
         this.foto = foto;
         this.sexo = sexo;
+        this.publicaciones = new LinkedHashSet<>();
         mascotas = new ArrayList<>();
         chats = new HashMap<>();
         notificaciones = new LinkedHashSet<>();

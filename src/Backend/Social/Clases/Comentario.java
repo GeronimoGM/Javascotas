@@ -60,8 +60,45 @@ public class Comentario implements Notificadora<Comentario>, Likeable, Comparabl
     }
     
     @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Comentario other = (Comentario) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+    
+    @Override
     public int compareTo(Comentario o) {
-        return Integer.compare(this.cantidadLikes(), o.cantidadLikes());
+        int res = Integer.compare(this.cantidadLikes(), o.cantidadLikes());
+
+        if (res == 0) {
+            if (this.equals(o)) {
+                return 0;
+            }
+            else {
+                return 1;
+            }
+        }
+        else {
+            return res;
+        }
     }
     
     @Override
@@ -69,6 +106,4 @@ public class Comentario implements Notificadora<Comentario>, Likeable, Comparabl
         usuario.anadirNotificacion(new Notificacion<Comentario>(this));
         return usuario;
     }
-
-    // TODO: arreglar bug (comentarios con mismos likes los toma como iguales)
 }

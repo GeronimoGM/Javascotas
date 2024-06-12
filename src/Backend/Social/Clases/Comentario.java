@@ -94,7 +94,7 @@ public class Comentario implements Notificadora<Comentario>, Likeable, Comparabl
                 return 0;
             }
             else {
-                return 1;
+                return hora.compareTo(o.hora);
             }
         }
         else {

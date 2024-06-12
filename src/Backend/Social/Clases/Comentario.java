@@ -2,17 +2,22 @@ package Backend.Social.Clases;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.UUID;
 
 import Backend.Social.Interfaces.Likeable;
 import Backend.Social.Interfaces.Notificadora;
 import Backend.Usuarios.Clases.Usuario;
 
 public class Comentario implements Notificadora<Comentario>, Likeable, Comparable<Comentario> {
+    private UUID id;
     private Usuario usuario;
     private String texto;
     private LocalDateTime hora;
     private HashSet<Like> likes;
 
+    public UUID getId() {
+        return id;
+    }
     public Usuario getUsuario() {
         return usuario;
     }
@@ -34,6 +39,7 @@ public class Comentario implements Notificadora<Comentario>, Likeable, Comparabl
     //cons
 
     public Comentario(Usuario usuario, String texto) {
+        id = UUID.randomUUID();
         this.usuario = usuario;
         this.texto = texto;
         hora = LocalDateTime.now();

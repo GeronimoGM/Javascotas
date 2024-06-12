@@ -3,19 +3,23 @@ package Backend.Social.Clases;
 import java.io.File;
 import java.util.HashSet;
 import java.util.TreeSet;
+import java.util.UUID;
 
 import Backend.Social.Interfaces.Likeable;
 import Backend.Usuarios.Clases.Usuario;
 import Backend.Usuarios.Clases.Mascotas.Abstracta.Mascota;
 
 public class Publicacion implements Likeable {
+    private UUID id;
     private Mascota mascota;
     private File foto;
     private String descripcion;
     private TreeSet<Comentario> comentarios;
     private HashSet<Like> likes;
 
-    
+    public UUID getId() {
+        return id;
+    }
     public Mascota getMascota() {
         return mascota;
     }
@@ -50,6 +54,7 @@ public class Publicacion implements Likeable {
     //cons
 
     public Publicacion(Mascota mascota, File foto, String descripcion) {
+        id = UUID.randomUUID();
         this.mascota = mascota;
         this.foto = foto;
         this.descripcion = descripcion;

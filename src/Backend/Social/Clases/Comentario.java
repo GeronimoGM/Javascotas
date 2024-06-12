@@ -45,14 +45,15 @@ public class Comentario implements Notificadora<Comentario>, Likeable, Comparabl
         return likes;
     }
     // Métodos
+    @Override
     public void likear(Usuario usuario) {
         likes.add(new Like(usuario));
     }
-
+    @Override
     public void unlikear(Usuario usuario) {
         likes.remove(new Like(usuario));
     }
-
+    @Override
     public int getCantidadLikes() {
         return likes.size();
     }

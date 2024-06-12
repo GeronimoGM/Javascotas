@@ -84,8 +84,11 @@ public class Usuario {
     public char getSexo() {
         return sexo;
     }
-    public void setSexo(char sexo) {
-        this.sexo = sexo;
+    public void setSexo(char sexo) throws InvalidAttributeValueException {
+        sexo = Character.toLowerCase(sexo);
+        if (sexo != 'f' && sexo != 'm') {
+            throw new InvalidAttributeValueException("El sexo solo puede ser femenino(f) o masculino(m)");
+        }
     }
     // Métodos    
     public void publicar(Publicacion publicacion) {

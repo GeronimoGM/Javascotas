@@ -4,7 +4,6 @@ import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 
 import javax.management.InvalidAttributeValueException;
@@ -94,17 +93,13 @@ public class Usuario {
         publicaciones.add(publicacion);
     }
 
-    public boolean eliminarPublicacion(Publicacion publicacion) { // TODO: fixear y estandarizar funciones de añadir y eliminar
-        boolean eliminado = false;
-        Iterator <Publicacion> iterador = publicaciones.iterator();
-        
-        while (iterador.hasNext()) {
-            if(iterador.next().equals(publicacion)) {
-                iterador.remove();
-                eliminado = true;
-            }
+    public boolean eliminarPublicacion(Publicacion publicacion) {
+        if (publicaciones.remove(publicacion)) {
+            return true;
         }
-        return eliminado;
+        else {
+            return false;
+        }
     }
 
     public void anadirMascota(Mascota mascota) throws InvalidAttributeValueException {
@@ -122,6 +117,15 @@ public class Usuario {
     
     public void anadirNotificacion(Notificacion<?> notificacion) {
         notificaciones.add(notificacion);
+    }
+
+    public boolean eliminarNotificacion(Notificacion<?> notificacion) {
+        if (notificaciones.remove(notificacion)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public void limpiarNotificaciones() {

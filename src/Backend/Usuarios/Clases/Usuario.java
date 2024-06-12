@@ -150,7 +150,7 @@ public class Usuario {
         return publicaciones;
     }
 
-    public boolean eliminarPunlicacion(Publicacion publicacion){
+    public boolean eliminarPublicacion(Publicacion publicacion){
         boolean eliminado = false;
         Iterator <Publicacion> iterador = publicaciones.iterator();
         

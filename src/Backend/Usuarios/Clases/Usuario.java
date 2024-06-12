@@ -65,10 +65,10 @@ public class Usuario {
     }
     public void setFechaNacimiento(LocalDate fechaDeNacimiento) throws InvalidAttributeValueException {
         this.fechaDeNacimiento = fechaDeNacimiento;
-        setEdad(calcularEdad());
+        setEdad(getEdad());
     }
-    public int getEdad() { // TODO: cambiar calcular edad por getEdad()
-        return edad;
+    public int getEdad() {
+        return LocalDate.now().getYear() - fechaDeNacimiento.getYear();
     }
     private void setEdad(int edad) throws InvalidAttributeValueException {
         if (edad < 0) {
@@ -123,13 +123,6 @@ public class Usuario {
             chats.put(usuario.getUsername(), chat);
         }
         return chat;
-    }
-
-    public int calcularEdad() {
-        LocalDate hoy = LocalDate.now();
-        int edad = 0;
-        edad = (hoy.getYear() - (fechaDeNacimiento.getYear()));
-        return edad;
     }
 
     @Override

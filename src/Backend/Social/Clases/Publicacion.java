@@ -49,14 +49,8 @@ public class Publicacion implements Likeable {
     public TreeSet<Comentario> getComentarios() {
         return comentarios;
     }
-    public void setComentarios(TreeSet<Comentario> comentarios) {
-        this.comentarios = comentarios;
-    }
     public HashSet<Like> getLikes() {
         return likes;
-    }
-    public void setLike(HashSet<Like> likes) {
-        this.likes = likes;
     }
     // Métodos
     @Override

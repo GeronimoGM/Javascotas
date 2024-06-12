@@ -60,7 +60,6 @@ public class Publicacion implements Likeable {
         this.likes = likes;
     }
     // Métodos
-
     @Override
     public void likear(Usuario usuario) {
         likes.add(new Like(usuario));

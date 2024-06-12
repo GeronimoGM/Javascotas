@@ -75,7 +75,7 @@ public class Publicacion implements Likeable {
         return likes.size();
     }
     
-    public void anadirComentario(Comentario comentario) { // TODO: cuando se tenga al gestor hacer que esto notifique
+    public void comentar(Comentario comentario) { // TODO: cuando se tenga al gestor hacer que esto notifique
         comentarios.add(comentario);
     }
 

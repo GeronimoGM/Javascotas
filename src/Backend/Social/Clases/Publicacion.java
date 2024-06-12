@@ -24,6 +24,9 @@ public class Publicacion implements Likeable {
         comentarios = new TreeSet<>();
         likes = new HashSet<>();
     }
+    Publicacion(UUID id) {
+        this.id = id;
+    }
     // Getters y setters
     public UUID getId() {
         return id;

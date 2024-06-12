@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
+import java.util.UUID;
 
 import javax.management.InvalidAttributeValueException;
 
@@ -89,6 +90,19 @@ public class Usuario {
     // Métodos    
     public void publicar(Publicacion publicacion) {
         publicaciones.add(publicacion);
+    }
+
+    public Publicacion getPublicacion(UUID id) {
+        var it = publicaciones.iterator();
+
+        while (it.hasNext()) {
+            Publicacion aux = it.next();
+            if (aux.equals(new Publicacion(id))) {
+                return aux;
+            }
+        }
+
+        return null;
     }
 
     public boolean eliminarPublicacion(Publicacion publicacion) {

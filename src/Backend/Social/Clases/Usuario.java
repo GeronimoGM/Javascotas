@@ -128,7 +128,7 @@ public class Usuario {
     public Chat abrirChat(Usuario usuario) {
         Chat chat = chats.get(usuario.getUsername());
         if (chat == null) {
-            chat  = new Chat(this.getUsername(), usuario);
+            chat  = new Chat(this.getUsername(), usuario.getUsername());
             chats.put(usuario.getUsername(), chat);
             usuario.abrirChat(this);
         }

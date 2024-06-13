@@ -2,12 +2,15 @@ package Backend.Social.Clases;
 
 import java.util.LinkedList;
 
+import Backend.Gestor.Clases.Gestor;
+import Backend.Gestor.Excepciones.UsuarioNoExistenteException;
+
 public class Chat {
     private String emisor;
-    private Usuario receptor;
+    private String receptor;
     private LinkedList<Mensaje> mensajes;
     // Constructores
-    public Chat(String emisor, Usuario receptor) {
+    public Chat(String emisor, String receptor) {
         this.emisor = emisor;
         this.receptor = receptor;
         this.mensajes = new LinkedList<>();
@@ -16,7 +19,7 @@ public class Chat {
     public String getEmisor() {
         return emisor;
     }
-    public Usuario getReceptor() {
+    public String getReceptor() {
         return receptor;
     }
     public LinkedList<Mensaje> getMensajes() {
@@ -24,10 +27,16 @@ public class Chat {
     }
     // Métodos
     public void enviarMensaje(String texto) {
-        Mensaje mensaje = new Mensaje(receptor.getUsername(), texto);
+        Mensaje mensaje = new Mensaje(receptor, texto);
         mensajes.add(mensaje);
-        receptor.anadirMensajeRecibido(emisor, mensaje);
-        mensaje.notificar(receptor);
+        Usuario usuarioReceptor = null;
+        try {
+            usuarioReceptor = Gestor.getUsuario(receptor);
+        } catch (UsuarioNoExistenteException e) {
+            
+        }
+        usuarioReceptor.anadirMensajeRecibido(emisor, mensaje);
+        mensaje.notificar(usuarioReceptor);
     }
 
     void anadirMensaje(Mensaje mensaje) {

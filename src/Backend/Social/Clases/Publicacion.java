@@ -84,11 +84,6 @@ public class Publicacion implements Likeable {
     
     public void comentar(Comentario comentario) {
         comentarios.add(comentario);
-        try {
-            comentario.notificar(Gestor.getUsuario(username));
-        } catch (UsuarioNoExistenteException e) {
-            // TODO: handle exception
-        }
     }
 
     public Comentario getComentario(UUID id) {

@@ -20,11 +20,20 @@ public class Gestor {
     public static Usuario sesionIniciada = null;
     private static HashMap<String, Usuario> usuarios = new HashMap<>();
     private final static File jsonFile = new File("files/usuarios.json"); 
-
+    // Constructor
     public Gestor() throws InstantiationException{
         throw new InstantiationException("Esta clase no puede ser instanciada");
     }
-
+    // Getter y setters
+    public static Usuario getUsuario(String username) throws UsuarioNoExistenteException {
+        if (usuarios.containsKey(username)) {
+            return usuarios.get(username);
+        }
+        else {
+            throw new UsuarioNoExistenteException("No existe un usuario con el username: " + username);
+        }
+    }
+    // Métodos
     public static void registrarse(Usuario usuario) throws UsuarioYaExistenteException {
         if (!usuarios.containsKey(usuario.getUsername())) {
             usuarios.put(usuario.getUsername(), usuario);

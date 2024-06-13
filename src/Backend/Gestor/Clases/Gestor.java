@@ -1,8 +1,10 @@
 package Backend.Gestor.Clases;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -49,6 +51,29 @@ public class Gestor {
 
     public static void cerrarSesion() { // TODO: cuando se haya hecho la función guardar hacer que después de cerrar sesión se guarde.
         sesionIniciada = null;
+    }
+
+    public static void guardar() {
+        BufferedWriter buffer = null;
+
+        try {
+            buffer = new BufferedWriter(new FileWriter(jsonFile));
+
+            Gson gson = new Gson(); // TODO: hacer MascotaAdapter
+
+            gson.toJson(usuarios, buffer);
+        } catch (Exception e) {
+
+        }
+        finally {
+            if (buffer != null) {
+                try {
+                    buffer.close();
+                } catch (IOException e) {
+                    throw new RuntimeException();
+                }
+            }
+        }
     }
 
     public static void cargar() {

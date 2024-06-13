@@ -9,14 +9,14 @@ import Backend.Social.Interfaces.Notificadora;
 
 public class Comentario implements Notificadora<Comentario>, Likeable, Comparable<Comentario> {
     private UUID id;
-    private Usuario usuario;
+    private String username;
     private String texto;
     private LocalDateTime hora;
     private HashSet<Like> likes;
     // Constructores
-    public Comentario(Usuario usuario, String texto) {
+    public Comentario(String username, String texto) {
         id = UUID.randomUUID();
-        this.usuario = usuario;
+        this.username = username;
         this.texto = texto;
         hora = LocalDateTime.now();
         likes = new HashSet<>();
@@ -28,11 +28,8 @@ public class Comentario implements Notificadora<Comentario>, Likeable, Comparabl
     public UUID getId() {
         return id;
     }
-    public Usuario getUsuario() {
-        return usuario;
-    }
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public String getUsername() {
+        return username;
     }
     public String getTexto() {
         return texto;

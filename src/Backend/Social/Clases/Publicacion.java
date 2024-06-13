@@ -11,6 +11,7 @@ import Backend.Social.Interfaces.Likeable;
 
 public class Publicacion implements Likeable {
     private UUID id;
+    private String username;
     private LocalDateTime hora;
     private Mascota mascota;
     private File foto;
@@ -33,6 +34,12 @@ public class Publicacion implements Likeable {
     // Getters y setters
     public UUID getId() {
         return id;
+    }
+    public String getUsername() {
+        return username;
+    }
+    void setUsername(String username) {
+        this.username = username;
     }
     public LocalDateTime getHora() {
         return hora;

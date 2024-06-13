@@ -6,8 +6,6 @@ import java.util.HashSet;
 import java.util.TreeSet;
 import java.util.UUID;
 
-import Backend.Gestor.Clases.Gestor;
-import Backend.Gestor.Excepciones.UsuarioNoExistenteException;
 import Backend.Mascotas.Clases.Abstracta.Mascota;
 import Backend.Social.Interfaces.Likeable;
 

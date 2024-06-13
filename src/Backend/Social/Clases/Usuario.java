@@ -98,7 +98,6 @@ public class Usuario {
     }
     // Métodos    
     public void publicar(Publicacion publicacion) {
-        publicacion.setUsername(username);
         publicaciones.add(publicacion);
     }
 

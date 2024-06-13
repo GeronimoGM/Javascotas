@@ -21,8 +21,9 @@ public class Publicacion implements Likeable {
     private TreeSet<Comentario> comentarios;
     private HashSet<Like> likes;
     // Constructores
-    public Publicacion(Mascota mascota, File foto, String descripcion) {
+    public Publicacion(Usuario usuario, Mascota mascota, File foto, String descripcion) {
         id = UUID.randomUUID();
+        this.username = usuario.getUsername();
         this.hora = LocalDateTime.now();
         this.mascota = mascota;
         this.foto = foto;
@@ -39,9 +40,6 @@ public class Publicacion implements Likeable {
     }
     public String getUsername() {
         return username;
-    }
-    void setUsername(String username) {
-        this.username = username;
     }
     public LocalDateTime getHora() {
         return hora;

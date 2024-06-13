@@ -73,7 +73,13 @@ public class Publicacion implements Likeable {
     // Métodos
     @Override
     public void likear(Usuario usuario) {
-        likes.add(new Like(usuario.getUsername()));
+        Like like = new Like(usuario.getUsername());
+        likes.add(like);
+        try {
+            like.notificar(Gestor.getUsuario(username));
+        } catch (UsuarioNoExistenteException e) {
+            
+        }
     }
     @Override
     public void unlikear(Usuario usuario) {

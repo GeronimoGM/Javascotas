@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.TreeSet;
 import java.util.UUID;
 
+import Backend.Gestor.Clases.Gestor;
+import Backend.Gestor.Excepciones.UsuarioNoExistenteException;
 import Backend.Mascotas.Clases.Abstracta.Mascota;
 import Backend.Social.Interfaces.Likeable;
 
@@ -82,8 +84,13 @@ public class Publicacion implements Likeable {
         return likes.size();
     }
     
-    public void comentar(Comentario comentario) { // TODO: cuando se tenga al gestor hacer que esto notifique
+    public void comentar(Comentario comentario) {
         comentarios.add(comentario);
+        try {
+            comentario.notificar(Gestor.getUsuario(username));
+        } catch (UsuarioNoExistenteException e) {
+            
+        }
     }
 
     public Comentario getComentario(UUID id) {

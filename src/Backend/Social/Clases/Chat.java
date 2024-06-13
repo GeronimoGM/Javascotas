@@ -33,7 +33,7 @@ public class Chat {
         try {
             usuarioReceptor = Gestor.getUsuario(receptor);
         } catch (UsuarioNoExistenteException e) {
-            
+            // TODO: handle exception
         }
         usuarioReceptor.anadirMensajeRecibido(emisor, mensaje);
         mensaje.notificar(usuarioReceptor);

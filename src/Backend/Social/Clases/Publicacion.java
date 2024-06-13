@@ -78,7 +78,7 @@ public class Publicacion implements Likeable {
         try {
             like.notificar(Gestor.getUsuario(username));
         } catch (UsuarioNoExistenteException e) {
-            
+            // TODO: handle exception
         }
     }
     @Override
@@ -96,7 +96,7 @@ public class Publicacion implements Likeable {
         try {
             comentario.notificar(Gestor.getUsuario(username));
         } catch (UsuarioNoExistenteException e) {
-            
+            // TODO: handle exception
         }
     }
 

@@ -90,6 +90,9 @@ public class Usuario {
             throw new InvalidAttributeValueException("El sexo solo puede ser femenino(f) o masculino(m)");
         }
     }
+    public LinkedHashSet<Publicacion> getPublicaciones() {
+        return publicaciones;
+    }
     // Métodos    
     public void publicar(Publicacion publicacion) {
         publicaciones.add(publicacion);

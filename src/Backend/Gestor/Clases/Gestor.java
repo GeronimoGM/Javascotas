@@ -8,8 +8,8 @@ import Backend.Social.Clases.Usuario;
 public class Gestor {
     private static HashMap<String, Usuario> usuarios = new HashMap<>();
 
-    public Gestor() {
-        throw new RuntimeException();
+    public Gestor() throws InstantiationException{
+        throw new InstantiationException("Esta clase no puede ser instanciada");
     }
 
     public static void registrarse(Usuario usuario) throws UsuarioYaExistenteException {

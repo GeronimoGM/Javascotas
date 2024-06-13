@@ -1,6 +1,13 @@
 package Backend.Gestor.Clases;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import Backend.Gestor.Excepciones.ContrasenaIncorrectaException;
 import Backend.Gestor.Excepciones.UsuarioNoExistenteException;
@@ -10,6 +17,7 @@ import Backend.Social.Clases.Usuario;
 public class Gestor {
     public static Usuario sesionIniciada = null;
     private static HashMap<String, Usuario> usuarios = new HashMap<>();
+    private final static File jsonFile = new File("files/usuarios.json"); 
 
     public Gestor() throws InstantiationException{
         throw new InstantiationException("Esta clase no puede ser instanciada");
@@ -41,5 +49,28 @@ public class Gestor {
 
     public static void cerrarSesion() { // TODO: cuando se haya hecho la función guardar hacer que después de cerrar sesión se guarde.
         sesionIniciada = null;
+    }
+
+    public static void cargar() {
+        BufferedReader buffer = null;
+
+        try {
+            buffer = new BufferedReader(new FileReader(jsonFile));
+
+            Gson gson = new Gson(); // TODO: hacer MascotaAdapter
+
+            usuarios = gson.fromJson(buffer, new TypeToken<HashMap<String, Usuario>>(){}.getType());
+        } catch (IOException e) {
+            
+        }
+        finally {
+            if (buffer != null) {
+                try {
+                    buffer.close();
+                } catch (IOException e) {
+                    throw new RuntimeException();
+                }
+            }
+        }
     }
 }

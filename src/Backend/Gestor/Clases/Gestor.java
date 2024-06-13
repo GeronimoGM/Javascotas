@@ -37,6 +37,7 @@ public class Gestor {
     public static void registrarse(Usuario usuario) throws UsuarioYaExistenteException {
         if (!usuarios.containsKey(usuario.getUsername())) {
             usuarios.put(usuario.getUsername(), usuario);
+            sesionIniciada = usuario;
         }
         else {
             throw new UsuarioYaExistenteException("Ya existe un usuario con el username: " + usuario.getUsername());

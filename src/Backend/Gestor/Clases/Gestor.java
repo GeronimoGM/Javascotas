@@ -58,8 +58,9 @@ public class Gestor {
         }
     }
 
-    public static void cerrarSesion() { // TODO: cuando se haya hecho la función guardar hacer que después de cerrar sesión se guarde.
+    public static void cerrarSesion() {
         sesionIniciada = null;
+        guardar();
     }
 
     public static void guardar() {

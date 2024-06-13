@@ -4,11 +4,14 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.UUID;
 
+import Backend.Gestor.Clases.Gestor;
+import Backend.Gestor.Excepciones.UsuarioNoExistenteException;
 import Backend.Social.Interfaces.Likeable;
 import Backend.Social.Interfaces.Notificadora;
 
 public class Comentario implements Notificadora<Comentario>, Likeable, Comparable<Comentario> {
     private UUID id;
+    private String usernamePublicacion;
     private String username;
     private String texto;
     private LocalDateTime hora;
@@ -28,6 +31,9 @@ public class Comentario implements Notificadora<Comentario>, Likeable, Comparabl
     public UUID getId() {
         return id;
     }
+    void setUsernamePublicacion(String usernamePublicacion) {
+        this.usernamePublicacion = usernamePublicacion;
+    }
     public String getUsername() {
         return username;
     }
@@ -46,7 +52,13 @@ public class Comentario implements Notificadora<Comentario>, Likeable, Comparabl
     // Métodos
     @Override
     public void likear(Usuario usuario) {
-        likes.add(new Like(usuario.getUsername()));
+        Like like = new Like(usuario.getUsername());
+        likes.add(like);
+        try {
+            like.notificar(Gestor.getUsuario(usernamePublicacion));
+        } catch (UsuarioNoExistenteException e) {
+            // TODO: handle exception
+        }
     }
     @Override
     public void unlikear(Usuario usuario) {

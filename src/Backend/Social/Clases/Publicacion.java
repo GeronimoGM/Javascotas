@@ -91,6 +91,7 @@ public class Publicacion implements Likeable {
     }
     
     public void comentar(Comentario comentario) {
+        comentario.setUsernamePublicacion(username);
         comentarios.add(comentario);
         try {
             comentario.notificar(Gestor.getUsuario(username));

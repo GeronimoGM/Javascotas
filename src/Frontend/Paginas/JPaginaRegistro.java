@@ -13,6 +13,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -36,7 +37,7 @@ public class JPaginaRegistro extends JPanel {
 
     public JPanel panelContrasena;
     public JLabel labelContrasena;
-    public JTextField inputContrasena;
+    public JPasswordField inputContrasena;
     
     public JPanel panelNacimiento;
     public JLabel labelNacimiento;
@@ -119,7 +120,7 @@ public class JPaginaRegistro extends JPanel {
         labelContrasena.setAlignmentY(Component.CENTER_ALIGNMENT);
         labelContrasena.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        inputContrasena = new JTextField();
+        inputContrasena = new JPasswordField();
         inputContrasena.setAlignmentY(Component.CENTER_ALIGNMENT);
         inputContrasena.setAlignmentX(Component.CENTER_ALIGNMENT);
         inputContrasena.setMaximumSize(new Dimension(200, 25));

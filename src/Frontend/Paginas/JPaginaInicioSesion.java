@@ -9,6 +9,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import Frontend.JMainFrame;
@@ -26,7 +27,7 @@ public class JPaginaInicioSesion extends JPanel {
     
     public JPanel panelContrasena;
     public JLabel labelContrasena;
-    public JTextField inputContrasena;
+    public JPasswordField inputContrasena;
 
     public JButton iniciarSesion;
 
@@ -80,7 +81,7 @@ public class JPaginaInicioSesion extends JPanel {
         labelContrasena.setAlignmentY(Component.CENTER_ALIGNMENT);
         labelContrasena.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        inputContrasena = new JTextField();
+        inputContrasena = new JPasswordField();
         inputContrasena.setAlignmentY(Component.CENTER_ALIGNMENT);
         inputContrasena.setAlignmentX(Component.CENTER_ALIGNMENT);
         inputContrasena.setMaximumSize(new Dimension(200, 25));

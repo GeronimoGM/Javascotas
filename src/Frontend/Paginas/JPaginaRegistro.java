@@ -67,7 +67,7 @@ public class JPaginaRegistro extends JPanel {
         atras.addActionListener(e -> parent.showPanel("paginaPrincipal"));
 
         titulo = new JLabel("Registrarse");
-        titulo.setFont(new Font("Arial", Font.BOLD, 24));
+        titulo.setFont(new Font("Arial", Font.BOLD, 36));
         titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         header.add(Box.createRigidArea(new Dimension(25, 0)));

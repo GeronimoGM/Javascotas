@@ -22,7 +22,7 @@ public class JPaginaPrincipal extends JPanel {
         this.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         titulo = new JLabel("Javascotas");
-        titulo.setFont(new Font("Arial", Font.BOLD, 24));
+        titulo.setFont(new Font("Arial", Font.BOLD, 48));
         titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         iniciarSesion = new JButton("Iniciar sesión");

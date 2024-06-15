@@ -31,7 +31,6 @@ public class JMainFrame extends JFrame {
         this.add(paginaPrincipal, "paginaPrincipal");
         this.add(paginaInicioSesion, "paginaInicioSesion");
         this.add(paginaRegistro, "paginaRegistro");
-        this.add(paginaRedSocial, "paginaRedSocial");
 
         // Mostrar ventana
         this.setVisible(true);

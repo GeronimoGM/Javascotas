@@ -106,6 +106,8 @@ public class JPaginaInicioSesion extends JPanel {
     }
 
     private void iniciarSesion() {
+        parent.paginaRedSocial = new JPaginaRedSocial(parent);
+        parent.add(parent.paginaRedSocial, "paginaRedSocial");
         parent.showPanel("paginaRedSocial"); // TODO: implementar funcionalidad real
     }
 }

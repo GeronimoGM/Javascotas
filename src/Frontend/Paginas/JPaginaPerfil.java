@@ -33,6 +33,8 @@ public class JPaginaPerfil extends JScrollPane {
     public JPanel panelMascotasYPublicaciones;
     public JLabel labelMascotas;
     public JPanel panelMascotas;
+    public JLabel labelPublicaciones;
+    public JPanel panelPublicaciones;
 
     public JPaginaPerfil(JPaginaRedSocial parent, Usuario usuario) {
         this.parent = parent;
@@ -51,6 +53,15 @@ public class JPaginaPerfil extends JScrollPane {
         nombre = new JLabel(usuario.getNombre());
         nombre.setFont(new Font("Arial", Font.BOLD, 36));
         nombre.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        // TODO: añadir algo asi
+        // if (usuario.equals(Gestor.sesionIniciada)) {
+        //    botonPublicar
+        //    botonAñadirMascota
+        // }
+        // else {
+        //    botonMensaje
+        // }
 
         //  Panel edad y sexo
         edadYSexo = new JPanel();
@@ -97,6 +108,8 @@ public class JPaginaPerfil extends JScrollPane {
         }
         
         // Publicaciones
+        panelPublicaciones = new JPanel();
+        panelPublicaciones.setLayout(new BoxLayout(panelPublicaciones, BoxLayout.Y_AXIS));
 
         panelMascotasYPublicaciones.add(panelMascotas);
 

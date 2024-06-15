@@ -10,6 +10,7 @@ import java.util.UUID;
 import javax.management.InvalidAttributeValueException;
 
 import Backend.Mascotas.Clases.Abstracta.Mascota;
+import Backend.Social.Enums.Sexo;
 
 public class Usuario {
     private String username;
@@ -19,14 +20,14 @@ public class Usuario {
     @SuppressWarnings("unused")
     private int edad;
     private File foto;
-    private char sexo;
+    private Sexo sexo;
     private LinkedHashSet<Publicacion> publicaciones;
     private ArrayList<Mascota> mascotas;
     private HashMap<String, Chat> chats;
     private LinkedHashSet<Notificacion<?>> notificaciones;
     // Constructores
     public Usuario(String username, String nombre, String contrasena, LocalDate fechaDeNacimiento, File foto,
-            char sexo) throws InvalidAttributeValueException {
+            Sexo sexo) throws InvalidAttributeValueException {
         this.username = username;
         this.nombre = nombre;
         this.contrasena = contrasena;
@@ -75,7 +76,7 @@ public class Usuario {
     public void setFoto(File foto) {
         this.foto = foto;
     }
-    public char getSexo() {
+    public Sexo getSexo() {
         return sexo;
     }
     public void setSexo(char sexo) throws InvalidAttributeValueException {

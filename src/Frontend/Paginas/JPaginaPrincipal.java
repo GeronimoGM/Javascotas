@@ -33,6 +33,7 @@ public class JPaginaPrincipal extends JPanel {
         registrarse = new JButton("Registrarse");
         registrarse.setAlignmentX(Component.CENTER_ALIGNMENT);
         registrarse.setFocusPainted(false);
+        registrarse.addActionListener(e -> parent.showPanel("paginaRegistro"));
 
         this.add(Box.createVerticalGlue());
         this.add(titulo);

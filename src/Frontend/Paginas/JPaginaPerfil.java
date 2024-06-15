@@ -14,7 +14,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
+import Backend.Mascotas.Clases.Abstracta.Mascota;
 import Backend.Social.Clases.Usuario;
+import Frontend.Componentes.JMascota;
 
 public class JPaginaPerfil extends JScrollPane {
     public JPaginaRedSocial parent;
@@ -27,6 +29,10 @@ public class JPaginaPerfil extends JScrollPane {
     public JPanel edadYSexo;
     public JLabel edad;
     public JLabel sexo;
+    
+    public JPanel panelMascotasYPublicaciones;
+    public JLabel labelMascotas;
+    public JPanel panelMascotas;
 
     public JPaginaPerfil(JPaginaRedSocial parent, Usuario usuario) {
         this.parent = parent;
@@ -72,11 +78,28 @@ public class JPaginaPerfil extends JScrollPane {
         header.add(Box.createRigidArea(new Dimension(0, 25)));
         header.add(edadYSexo);
         header.add(Box.createRigidArea(new Dimension(0, 25)));
+
+        // Mascotas
+        panelMascotasYPublicaciones = new JPanel();
+
+        panelMascotas = new JPanel();
+        panelMascotas.setLayout(new BoxLayout(panelMascotas, BoxLayout.Y_AXIS));
+
+        labelMascotas = new JLabel("Mascotas:");
+        labelMascotas.setFont(new Font("Arial", Font.BOLD, 24));
+        labelMascotas.setAlignmentX(Component.CENTER_ALIGNMENT);
         
+        panelMascotas.add(labelMascotas);
+
+        for (Mascota mascota : usuario.getMascotas()) {
+            panelMascotas.add(new JMascota(mascota));
+        }
+
+        panelMascotasYPublicaciones.add(panelMascotas);
+
         // Layout
-        container.add(Box.createGlue());
         container.add(header, BorderLayout.NORTH);
-        container.add(Box.createGlue());
+        container.add(panelMascotasYPublicaciones, BorderLayout.CENTER);
 
         this.setViewportView(container);
         this.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);

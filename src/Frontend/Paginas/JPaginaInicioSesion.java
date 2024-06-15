@@ -52,7 +52,7 @@ public class JPaginaInicioSesion extends JPanel {
         
         // Panel username
         panelUsername = new JPanel();
-        panelUsername.setLayout(new BoxLayout(panelUsername, BoxLayout.X_AXIS));
+        panelUsername.setLayout(new BoxLayout(panelUsername, BoxLayout.Y_AXIS));
 
         labelUsername = new JLabel("Nombre de usuario:");
         labelUsername.setAlignmentY(Component.CENTER_ALIGNMENT);
@@ -64,12 +64,12 @@ public class JPaginaInicioSesion extends JPanel {
         inputUsername.setMaximumSize(new Dimension(200, 25));
 
         panelUsername.add(labelUsername);
-        panelUsername.add(Box.createRigidArea(new Dimension(5, 0)));
+        panelUsername.add(Box.createRigidArea(new Dimension(0, 5)));
         panelUsername.add(inputUsername);
 
         // Panel contraseña
         panelContrasena = new JPanel();
-        panelContrasena.setLayout(new BoxLayout(panelContrasena, BoxLayout.X_AXIS));
+        panelContrasena.setLayout(new BoxLayout(panelContrasena, BoxLayout.Y_AXIS));
 
         labelContrasena = new JLabel("Contraseña:");
         labelContrasena.setAlignmentY(Component.CENTER_ALIGNMENT);
@@ -81,7 +81,7 @@ public class JPaginaInicioSesion extends JPanel {
         inputContrasena.setMaximumSize(new Dimension(200, 25));
 
         panelContrasena.add(labelContrasena);
-        panelContrasena.add(Box.createRigidArea(new Dimension(5, 0)));
+        panelContrasena.add(Box.createRigidArea(new Dimension(0, 5)));
         panelContrasena.add(inputContrasena);
 
         // Boton

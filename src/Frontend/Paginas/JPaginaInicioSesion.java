@@ -48,11 +48,13 @@ public class JPaginaInicioSesion extends JPanel {
         titulo.setFont(new Font("Arial", Font.BOLD, 24));
         titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
         
+        header.add(Box.createRigidArea(new Dimension(25, 0)));
         header.add(atras);
         header.add(Box.createHorizontalGlue());
         header.add(titulo);
+        header.add(Box.createRigidArea(new Dimension(100, 0)));
         header.add(Box.createHorizontalGlue());
-        
+
         // Panel username
         panelUsername = new JPanel();
         panelUsername.setLayout(new BoxLayout(panelUsername, BoxLayout.Y_AXIS));

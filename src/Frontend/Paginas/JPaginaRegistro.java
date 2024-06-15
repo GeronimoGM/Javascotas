@@ -70,9 +70,11 @@ public class JPaginaRegistro extends JPanel {
         titulo.setFont(new Font("Arial", Font.BOLD, 24));
         titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
         
+        header.add(Box.createRigidArea(new Dimension(25, 0)));
         header.add(atras);
         header.add(Box.createHorizontalGlue());
         header.add(titulo);
+        header.add(Box.createRigidArea(new Dimension(100, 0)));
         header.add(Box.createHorizontalGlue());
 
         // Username

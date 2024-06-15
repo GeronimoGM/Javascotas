@@ -48,9 +48,6 @@ public class Usuario {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public String getContrasena() {
-        return contrasena;
-    }
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
@@ -96,7 +93,12 @@ public class Usuario {
     public LinkedHashSet<Notificacion<?>> getNotificaciones() {
         return notificaciones;
     }
-    // Métodos    
+    // Métodos
+    public boolean esContrasenaCorrecta (String contrasena)
+    {
+        return contrasena.equals(this.contrasena);
+    }
+    
     public void publicar(Publicacion publicacion) {
         publicaciones.add(publicacion);
     }

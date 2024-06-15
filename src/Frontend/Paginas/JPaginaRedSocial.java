@@ -8,6 +8,7 @@ import java.awt.Dimension;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
@@ -22,6 +23,10 @@ public class JPaginaRedSocial extends JPanel {
     public JButton cerrarSesion;
 
     public JTabbedPane pestanas;
+    public JPanel panelExplorar;
+    public JPanel panelChats;
+    public JPanel panelNotificaciones;
+    public JPanel panelPerfil;
 
     public JPaginaRedSocial(JMainFrame parent) {
         this.setLayout(new BorderLayout());
@@ -37,18 +42,22 @@ public class JPaginaRedSocial extends JPanel {
         explorar = new JButton("Explorar");
         explorar.setAlignmentX(Component.CENTER_ALIGNMENT);
         explorar.setFocusPainted(false);
+        explorar.addActionListener(e -> pestanas.setSelectedIndex(0));
 
         chats = new JButton("Chats");
         chats.setAlignmentX(Component.CENTER_ALIGNMENT);
         chats.setFocusPainted(false);
+        chats.addActionListener(e -> pestanas.setSelectedIndex(1));
 
         notificaciones = new JButton("Notificaciones");
         notificaciones.setAlignmentX(Component.CENTER_ALIGNMENT);
         notificaciones.setFocusPainted(false);
+        notificaciones.addActionListener(e -> pestanas.setSelectedIndex(2));
 
         perfil = new JButton("Perfil");
         perfil.setAlignmentX(Component.CENTER_ALIGNMENT);
         perfil.setFocusPainted(false);
+        perfil.addActionListener(e -> pestanas.setSelectedIndex(3));
 
         cerrarSesion = new JButton("Cerrar sesión");
         cerrarSesion.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -70,6 +79,25 @@ public class JPaginaRedSocial extends JPanel {
         // Pestañas
         pestanas = new JTabbedPane();
         pestanas.setLayout(new BoxLayout(pestanas, BoxLayout.Y_AXIS));
+        // TODO: borrar los labels de prueba (esto es solo para probar que funciona cambiar pestañas)
+        panelExplorar = new JPanel();
+        panelExplorar.add(new JLabel("Panel 1"));
+
+        panelChats = new JPanel();
+        panelChats.add(new JLabel("Panel 2"));
+
+        panelNotificaciones = new JPanel();
+        panelNotificaciones.add(new JLabel("Panel 3"));
+
+        panelPerfil = new JPanel();
+        panelPerfil.add(new JLabel("Panel 4"));
+
+        pestanas.add("panelExplorar", panelExplorar);
+        pestanas.add("panelChats", panelChats);
+        pestanas.add("panelNotificaciones", panelNotificaciones);
+        pestanas.add("panelPerfil", panelPerfil);
+
+        pestanas.setSelectedIndex(0);
 
         // Layout
         this.add(sidebar, BorderLayout.WEST);

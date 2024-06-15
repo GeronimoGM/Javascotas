@@ -50,7 +50,7 @@ public class Gestor {
         }
         else {
             Usuario porIniciar = usuarios.get(username);
-            if (porIniciar.getContrasena().equals(contrasena)) {
+            if (porIniciar.esContrasenaCorrecta(contrasena)) {
                 sesionIniciada = porIniciar;
             }
             else {

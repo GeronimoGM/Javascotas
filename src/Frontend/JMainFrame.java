@@ -9,9 +9,9 @@ import Frontend.Paginas.JPaginaPrincipal;
 import Frontend.Paginas.JPaginaRegistro;
 
 public class JMainFrame extends JFrame {
-    private JPaginaPrincipal paginaPrincipal;
-    private JPaginaInicioSesion paginaInicioSesion;
-    private JPaginaRegistro paginaRegistro;
+    public JPaginaPrincipal paginaPrincipal;
+    public JPaginaInicioSesion paginaInicioSesion;
+    public JPaginaRegistro paginaRegistro;
 
     public JMainFrame(String title) {
         // Ventana

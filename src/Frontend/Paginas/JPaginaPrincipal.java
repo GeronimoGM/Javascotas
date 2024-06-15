@@ -13,9 +13,9 @@ import javax.swing.JPanel;
 import Frontend.JMainFrame;
 
 public class JPaginaPrincipal extends JPanel {
-    private JLabel titulo;
-    private JButton iniciarSesion;
-    private JButton registrarse;
+    public JLabel titulo;
+    public JButton iniciarSesion;
+    public JButton registrarse;
 
     public JPaginaPrincipal(JMainFrame parent) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));

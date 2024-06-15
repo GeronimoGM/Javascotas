@@ -22,36 +22,36 @@ import com.github.lgooddatepicker.components.DatePickerSettings;
 import Frontend.JMainFrame;
 
 public class JPaginaRegistro extends JPanel {
-    private JPanel header;
-    private JButton atras;
-    private JLabel titulo;
+    public JPanel header;
+    public JButton atras;
+    public JLabel titulo;
 
-    private JPanel panelUsername;
-    private JLabel labelUsername;
-    private JTextField inputUsername;
+    public JPanel panelUsername;
+    public JLabel labelUsername;
+    public JTextField inputUsername;
 
-    private JPanel panelNombre;
-    private JLabel labelNombre;
-    private JTextField inputNombre;
+    public JPanel panelNombre;
+    public JLabel labelNombre;
+    public JTextField inputNombre;
 
-    private JPanel panelContrasena;
-    private JLabel labelContrasena;
-    private JTextField inputContrasena;
+    public JPanel panelContrasena;
+    public JLabel labelContrasena;
+    public JTextField inputContrasena;
     
-    private JPanel panelNacimiento;
-    private JLabel labelNacimiento;
-    private DatePicker inputNacimiento;
+    public JPanel panelNacimiento;
+    public JLabel labelNacimiento;
+    public DatePicker inputNacimiento;
 
-    private JPanel panelFoto;
-    private JLabel labelFoto;
-    private JButton inputFoto;
-    private File fotoDePerfil;
+    public JPanel panelFoto;
+    public JLabel labelFoto;
+    public JButton inputFoto;
+    public File fotoDePerfil;
 
-    private JPanel panelSexo;
-    private JLabel labelSexo;
-    private JComboBox<String> inputSexo;
+    public JPanel panelSexo;
+    public JLabel labelSexo;
+    public JComboBox<String> inputSexo;
 
-    private JButton registrarse;
+    public JButton registrarse;
     
     public JPaginaRegistro(JMainFrame parent) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));

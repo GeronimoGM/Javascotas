@@ -14,19 +14,19 @@ import javax.swing.JTextField;
 import Frontend.JMainFrame;
 
 public class JPaginaInicioSesion extends JPanel {
-    private JPanel header;
-    private JButton atras;
-    private JLabel titulo;
+    public JPanel header;
+    public JButton atras;
+    public JLabel titulo;
 
-    private JPanel panelUsername;
-    private JLabel labelUsername;
-    private JTextField inputUsername;
+    public JPanel panelUsername;
+    public JLabel labelUsername;
+    public JTextField inputUsername;
     
-    private JPanel panelContrasena;
-    private JLabel labelContrasena;
-    private JTextField inputContrasena;
+    public JPanel panelContrasena;
+    public JLabel labelContrasena;
+    public JTextField inputContrasena;
 
-    private JButton iniciarSesion;
+    public JButton iniciarSesion;
 
     public JPaginaInicioSesion(JMainFrame parent) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));

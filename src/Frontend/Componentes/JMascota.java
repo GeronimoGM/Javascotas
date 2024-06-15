@@ -10,6 +10,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Backend.Mascotas.Clases.Abstracta.Mascota;
+import Backend.Mascotas.Clases.Concretas.Conejo;
+import Backend.Mascotas.Clases.Concretas.Gato;
+import Backend.Mascotas.Clases.Concretas.Perro;
 
 public class JMascota extends JPanel {
     public JLabel tipoMascota;
@@ -51,5 +54,49 @@ public class JMascota extends JPanel {
         this.add(tipoMascota);
         this.add(nombre);
         this.add(edadYSexo);
+        
+        if (mascota instanceof Conejo) {
+            JLabel aux = new JLabel("Comida favorita: " + ((Conejo)mascota).getComidaFavorita());
+            aux.setFont(new Font("Arial", Font.BOLD, 16));
+            aux.setAlignmentX(Component.CENTER_ALIGNMENT);
+            this.add(aux);
+        
+            aux = new JLabel("Tamaño de orejas: " + ((Conejo)mascota).getTamanioOrejas());
+            aux.setFont(new Font("Arial", Font.BOLD, 16));
+            aux.setAlignmentX(Component.CENTER_ALIGNMENT);
+            this.add(aux);
+        }
+        if (mascota instanceof Gato) {
+            JLabel aux = new JLabel("Raza: " + ((Gato)mascota).getRaza());
+            aux.setFont(new Font("Arial", Font.BOLD, 16));
+            aux.setAlignmentX(Component.CENTER_ALIGNMENT);
+            this.add(aux);
+        
+            aux = new JLabel("Juguete favorito: " + ((Gato)mascota).getJugueteFavorito());
+            aux.setFont(new Font("Arial", Font.BOLD, 16));
+            aux.setAlignmentX(Component.CENTER_ALIGNMENT);
+            this.add(aux);
+        
+            aux = new JLabel("Comida favorita: " + ((Gato)mascota).getComidaFavorita());
+            aux.setFont(new Font("Arial", Font.BOLD, 16));
+            aux.setAlignmentX(Component.CENTER_ALIGNMENT);
+            this.add(aux);
+        }
+        if (mascota instanceof Perro) {
+            JLabel aux = new JLabel("Raza: " + ((Perro)mascota).getRaza());
+            aux.setFont(new Font("Arial", Font.BOLD, 16));
+            aux.setAlignmentX(Component.CENTER_ALIGNMENT);
+            this.add(aux);
+        
+            aux = new JLabel("Juguete favorito: " + ((Perro)mascota).getJugueteFavorito());
+            aux.setFont(new Font("Arial", Font.BOLD, 16));
+            aux.setAlignmentX(Component.CENTER_ALIGNMENT);
+            this.add(aux);
+        
+            aux = new JLabel("Comida favorita: " + ((Perro)mascota).getComidaFavorita());
+            aux.setFont(new Font("Arial", Font.BOLD, 16));
+            aux.setAlignmentX(Component.CENTER_ALIGNMENT);
+            this.add(aux);
+        }        
     }
 }

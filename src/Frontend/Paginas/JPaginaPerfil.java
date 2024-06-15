@@ -81,6 +81,7 @@ public class JPaginaPerfil extends JScrollPane {
 
         // Mascotas
         panelMascotasYPublicaciones = new JPanel();
+        panelMascotasYPublicaciones.setLayout(new BoxLayout(panelMascotasYPublicaciones, BoxLayout.Y_AXIS));
 
         panelMascotas = new JPanel();
         panelMascotas.setLayout(new BoxLayout(panelMascotas, BoxLayout.Y_AXIS));
@@ -94,6 +95,8 @@ public class JPaginaPerfil extends JScrollPane {
         for (Mascota mascota : usuario.getMascotas()) {
             panelMascotas.add(new JMascota(mascota));
         }
+        
+        // Publicaciones
 
         panelMascotasYPublicaciones.add(panelMascotas);
 

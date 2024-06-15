@@ -15,11 +15,15 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 import Backend.Mascotas.Clases.Abstracta.Mascota;
+import Backend.Social.Clases.Publicacion;
 import Backend.Social.Clases.Usuario;
 import Backend.Social.Enums.Sexo;
 import Frontend.Componentes.JMascota;
+import Frontend.Componentes.JPublicacion;
 
 public class JPaginaPerfil extends JScrollPane {
+    public Usuario usuario;
+    
     public JPaginaRedSocial parent;
 
     public JPanel container;
@@ -38,6 +42,7 @@ public class JPaginaPerfil extends JScrollPane {
     public JPanel panelPublicaciones;
 
     public JPaginaPerfil(JPaginaRedSocial parent, Usuario usuario) {
+        this.usuario = usuario;
         this.parent = parent;
         
         container = new JPanel();
@@ -112,7 +117,13 @@ public class JPaginaPerfil extends JScrollPane {
         panelPublicaciones = new JPanel();
         panelPublicaciones.setLayout(new BoxLayout(panelPublicaciones, BoxLayout.Y_AXIS));
 
+        for (Publicacion publicacion : usuario.getPublicaciones()) {
+            panelPublicaciones.add(new JPublicacion(this, publicacion));
+        }
+
         panelMascotasYPublicaciones.add(panelMascotas);
+        panelMascotas.add(Box.createRigidArea(new Dimension(0, 25)));
+        panelMascotasYPublicaciones.add(panelPublicaciones);
 
         // Layout
         container.add(header, BorderLayout.NORTH);

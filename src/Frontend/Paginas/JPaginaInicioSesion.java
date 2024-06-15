@@ -14,6 +14,8 @@ import javax.swing.JTextField;
 import Frontend.JMainFrame;
 
 public class JPaginaInicioSesion extends JPanel {
+    public JMainFrame parent;
+    
     public JPanel header;
     public JButton atras;
     public JLabel titulo;
@@ -29,6 +31,7 @@ public class JPaginaInicioSesion extends JPanel {
     public JButton iniciarSesion;
 
     public JPaginaInicioSesion(JMainFrame parent) {
+        this.parent = parent;
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -88,6 +91,7 @@ public class JPaginaInicioSesion extends JPanel {
         iniciarSesion = new JButton("Iniciar sesión");
         iniciarSesion.setAlignmentX(Component.CENTER_ALIGNMENT);
         iniciarSesion.setFocusPainted(false);
+        iniciarSesion.addActionListener(e -> iniciarSesion());
 
         // Layout
         this.add(Box.createRigidArea(new Dimension(0, 25)));
@@ -99,5 +103,9 @@ public class JPaginaInicioSesion extends JPanel {
         this.add(Box.createVerticalGlue());
         this.add(iniciarSesion);
         this.add(Box.createRigidArea(new Dimension(0, 25)));
+    }
+
+    private void iniciarSesion() {
+        parent.showPanel("paginaRedSocial"); // TODO: implementar funcionalidad real
     }
 }

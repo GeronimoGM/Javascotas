@@ -15,6 +15,8 @@ import javax.swing.ScrollPaneConstants;
 import Backend.Social.Clases.Comentario;
 
 public class JSeccionComentarios extends JFrame {
+    public JPublicacion parent;
+    
     public JScrollPane scrollPane;
 
     public JPanel container;
@@ -25,6 +27,8 @@ public class JSeccionComentarios extends JFrame {
     
     public JSeccionComentarios(JPublicacion parent) {
         super("Comentarios");
+        this.parent = parent;
+        
         this.setSize(400, 400);
         
         scrollPane = new JScrollPane();
@@ -48,6 +52,8 @@ public class JSeccionComentarios extends JFrame {
         
         panelComentar.add(inputComentario);
         panelComentar.add(comentar);
+
+        // TODO: añadir panelcomentarios
 
         container.add(Box.createVerticalGlue());
         container.add(panelComentar);

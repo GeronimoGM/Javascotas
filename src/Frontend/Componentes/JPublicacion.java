@@ -18,6 +18,8 @@ import Backend.Social.Clases.Publicacion;
 import Frontend.Paginas.JPaginaPerfil;
 
 public class JPublicacion extends JPanel {
+    JPaginaPerfil parent;
+    
     public Publicacion publicacion;
     
     public JLabel nombre;
@@ -32,6 +34,8 @@ public class JPublicacion extends JPanel {
     public JSeccionComentarios seccionComentarios;
     
     public JPublicacion(JPaginaPerfil parent, Publicacion publicacion) {
+        this.parent = parent;
+       
         this.publicacion = publicacion;
         
         this.setBorder(BorderFactory.createLineBorder(Color.black, 2));

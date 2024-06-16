@@ -12,8 +12,13 @@ import javax.swing.JPanel;
 
 import Backend.Gestor.Clases.Gestor;
 import Backend.Social.Clases.Comentario;
+import Backend.Social.Clases.Like;
 
 public class JComentario extends JPanel {
+    public JSeccionComentarios parent;
+    
+    private Comentario comentario;
+    
     public JPanel panelComentario;
     public JLabel username;
     public JPanel textoYHora;
@@ -26,6 +31,10 @@ public class JComentario extends JPanel {
     public JButton like;
 
     public JComentario(JSeccionComentarios parent, Comentario comentario) {
+        this.parent = parent;
+        
+        this.comentario = comentario;
+        
         this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
         panelComentario = new JPanel();
@@ -57,12 +66,33 @@ public class JComentario extends JPanel {
         panelComentario.add(textoYHora);
         panelComentario.add(cantLikes);
 
-        like = new JButton("Like");
+        if (comentario.getLikes().contains(new Like(Gestor.sesionIniciada.getUsername()))) {
+            like = new JButton("Unlike");
+        }
+        else {
+            like = new JButton("Like");
+        }
         like.setAlignmentX(Component.CENTER_ALIGNMENT);
         like.setFocusPainted(false);
+        like.addActionListener(e -> likear());
 
         this.add(panelComentario);
         this.add(Box.createHorizontalGlue());
         this.add(like);
+    }
+
+    private void likear() {
+        Like likeToAdd = new Like(Gestor.sesionIniciada.getUsername());
+        if (comentario.getLikes().contains(likeToAdd)) {
+            comentario.unlikear(Gestor.sesionIniciada);
+            cantLikes.setText(Integer.toString(comentario.getCantidadLikes()));
+            like.setText("Like");
+            likeToAdd.notificar(parent.parent.parent.usuario);
+        }
+        else {
+            comentario.likear(Gestor.sesionIniciada);
+            cantLikes.setText(Integer.toString(comentario.getCantidadLikes()));
+            like.setText("Unlike");
+        }
     }
 }

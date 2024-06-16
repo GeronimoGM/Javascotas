@@ -60,7 +60,7 @@ public class Publicacion implements Likeable {
     public void setfoto(File foto) throws IOException {
         if (foto != null && foto.exists()) {
             Path sourcePath = foto.toPath();
-            Path destinationPath = Paths.get("files", "publicacionmes", id + getFileExtension(foto));
+            Path destinationPath = Paths.get("files", "publicaciones", id + getFileExtension(foto));
 
             Files.createDirectories(destinationPath.getParent());
             Path copiedFilePath = Files.copy(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);

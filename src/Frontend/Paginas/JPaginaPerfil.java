@@ -9,11 +9,13 @@ import java.awt.Image;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
+import Backend.Gestor.Clases.Gestor;
 import Backend.Mascotas.Clases.Abstracta.Mascota;
 import Backend.Social.Clases.Publicacion;
 import Backend.Social.Clases.Usuario;
@@ -35,6 +37,10 @@ public class JPaginaPerfil extends JScrollPane {
     public JLabel edad;
     public JLabel sexo;
     
+    public JPanel panelOpciones;
+    public JButton publicar;
+    public JButton mascota;
+
     public JPanel panelMascotasYPublicaciones;
     public JLabel labelMascotas;
     public JPanel panelMascotas;
@@ -60,15 +66,6 @@ public class JPaginaPerfil extends JScrollPane {
         nombre.setFont(new Font("Arial", Font.BOLD, 36));
         nombre.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        // TODO: añadir algo asi
-        // if (usuario.equals(Gestor.sesionIniciada)) {
-        //    botonPublicar
-        //    botonAñadirMascota
-        // }
-        // else {
-        //    botonMensaje
-        // }
-
         //  Panel edad y sexo
         edadYSexo = new JPanel();
         edadYSexo.setLayout(new BoxLayout(edadYSexo, BoxLayout.X_AXIS));
@@ -88,12 +85,36 @@ public class JPaginaPerfil extends JScrollPane {
         edadYSexo.add(Box.createRigidArea(new Dimension(25, 0)));
         edadYSexo.add(sexo);
         
+        panelOpciones = new JPanel();
+        panelOpciones.setLayout(new BoxLayout(panelOpciones, BoxLayout.X_AXIS));
+        
+        if (usuario.equals(Gestor.sesionIniciada)) {
+           publicar = new JButton("Publicar");
+           publicar.setFocusPainted(false);
+           publicar.addActionListener(e -> publicar());
+
+           mascota = new JButton("Añadir mascota");
+           mascota.setFocusPainted(false);
+           mascota.addActionListener(e -> anadirMascota());
+
+           panelOpciones.add(Box.createHorizontalGlue());
+           panelOpciones.add(publicar);
+           panelOpciones.add(Box.createHorizontalGlue());
+           panelOpciones.add(mascota);
+           panelOpciones.add(Box.createHorizontalGlue());
+        }
+        else {
+           // TODO: botonMensaje
+        }
+
         header.add(Box.createRigidArea(new Dimension(0, 25)));
         header.add(nombre);
         header.add(Box.createRigidArea(new Dimension(0, 25)));
         header.add(fotoDePerfil);
         header.add(Box.createRigidArea(new Dimension(0, 25)));
         header.add(edadYSexo);
+        header.add(Box.createRigidArea(new Dimension(0, 25)));
+        header.add(panelOpciones);
         header.add(Box.createRigidArea(new Dimension(0, 25)));
 
         // Mascotas
@@ -133,5 +154,13 @@ public class JPaginaPerfil extends JScrollPane {
         this.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         this.getVerticalScrollBar().setUnitIncrement(16);
         this.getVerticalScrollBar().setBlockIncrement(64);
+    }
+
+    private void publicar() {
+        // TODO: frame form publicar
+    }
+
+    private void anadirMascota() {
+        // TODO: frame form añadir mascota
     }
 }

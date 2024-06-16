@@ -68,7 +68,12 @@ public class JPublicacion extends JPanel {
         footer = new JPanel();
         footer.setLayout(new BoxLayout(footer, BoxLayout.X_AXIS));
 
-        like = new JButton("Like");
+        if (publicacion.getLikes().contains(new Like(Gestor.sesionIniciada.getUsername()))) {
+            like = new JButton("Unlike");
+        }
+        else {
+            like = new JButton("Like");
+        }
         like.setAlignmentX(Component.CENTER_ALIGNMENT);
         like.setFocusPainted(false);
         like.addActionListener(e -> likear());

@@ -22,7 +22,8 @@ public class JPaginaChats extends JPanel {
 
         for(Chat chatito : chats.values()) {
             String receptor = chatito.getReceptor();
-            JButton chatButton = new JButton("Chat con " + receptor); 
+            JButton chatButton = new JButton("Chat con " + receptor);
+            chatButton.setFocusPainted(false);
             chatButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {

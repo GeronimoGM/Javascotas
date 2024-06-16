@@ -35,6 +35,7 @@ public class JChat extends JFrame {
 
         inputField = new JTextField();
         sendButton = new JButton("Enviar");
+        sendButton.setFocusPainted(false);
 
         sendButton.addActionListener(new ActionListener() {
             @Override

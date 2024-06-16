@@ -5,13 +5,16 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.time.LocalDate;
 
+import javax.management.InvalidAttributeValueException;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
@@ -22,6 +25,11 @@ import javax.swing.SpinnerNumberModel;
 import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 
+import Backend.Gestor.Clases.Gestor;
+import Backend.Mascotas.Clases.Concretas.Conejo;
+import Backend.Mascotas.Clases.Concretas.Gato;
+import Backend.Mascotas.Clases.Concretas.Perro;
+import Backend.Social.Enums.Sexo;
 import Frontend.Paginas.JPaginaPerfil;
 
 public class JFormMascota extends JFrame {
@@ -371,6 +379,7 @@ public class JFormMascota extends JFrame {
 
         anadirMascota = new JButton("Añadir mascota");
         anadirMascota.setFocusPainted(false);
+        anadirMascota.addActionListener(e -> anadirMascota());
 
         container.add(panelTitulo, BorderLayout.NORTH);
         container.add(form, BorderLayout.CENTER);
@@ -389,5 +398,108 @@ public class JFormMascota extends JFrame {
         cl.show(cards, cardName);
     }
 
-    
+    private void anadirMascota() {
+        int indexMascota = inputMascota.getSelectedIndex();
+
+        String nombre = inputNombre.getText().trim();
+        if (nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Inserte un nombre", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        LocalDate nacimiento = inputNacimiento.getDate();
+        
+        int indexSexo = inputSexo.getSelectedIndex();
+        Sexo sexo;
+        if (indexSexo == 0) {
+            sexo = Sexo.MASCULINO;
+        }
+        else {
+            sexo = Sexo.FEMENINO;
+        }
+
+        switch (indexMascota) {
+            case 0:
+                String razaPerro = inputRazaPerro.getText().trim();
+
+                if (razaPerro.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Ingrese una raza", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                String jugueteFavoritoPerro = inputJuguetePerro.getText().trim();
+
+                if (jugueteFavoritoPerro.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Ingrese un juguete", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                String comidaFavoritaPerro = inputComidaPerro.getText().trim();
+
+                if (comidaFavoritaPerro.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Ingrese una comida", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                try {
+                    Gestor.sesionIniciada.anadirMascota(new Perro(nombre, nacimiento, sexo, razaPerro, jugueteFavoritoPerro, comidaFavoritaPerro));
+                } catch (InvalidAttributeValueException e) {
+                    JOptionPane.showMessageDialog(this, "La fecha de nacimiento no puede ser futura", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                break;
+            case 1:
+                String razaGato = inputRazaGato.getText().trim();
+
+                if (razaGato.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Ingrese una raza", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                String jugueteFavoritoGato = inputJugueteGato.getText().trim();
+
+                if (jugueteFavoritoGato.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Ingrese un juguete", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                String comidaFavoritaGato = inputComidaGato.getText().trim();
+
+                if (comidaFavoritaGato.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Ingrese una comida", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                try {
+                    Gestor.sesionIniciada.anadirMascota(new Gato(nombre, nacimiento, sexo, razaGato, jugueteFavoritoGato, comidaFavoritaGato));
+                } catch (InvalidAttributeValueException e) {
+                    JOptionPane.showMessageDialog(this, "La fecha de nacimiento no puede ser futura", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                break;
+            case 2:
+                String comidaFavoritaConejo = inputComida.getText().trim();
+
+                if (comidaFavoritaConejo.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Ingrese una comida", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                Number orejasValue = (Number) inputOrejas.getValue();
+                Double orejas = orejasValue.doubleValue();
+
+                try {
+                    Gestor.sesionIniciada.anadirMascota(new Conejo(nombre, nacimiento, sexo, comidaFavoritaConejo, orejas));
+                } catch (InvalidAttributeValueException e) {
+                    JOptionPane.showMessageDialog(this, "La fecha de nacimiento no puede ser futura", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                break;
+            default:
+                JOptionPane.showMessageDialog(this, "Tipo de mascota no reconocida", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+        }
+
+        this.setVisible(false);
+    }
 }

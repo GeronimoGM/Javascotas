@@ -27,7 +27,7 @@ public class JPaginaRedSocial extends JPanel {
     public JTabbedPane pestanas;
     public JPanel panelExplorar;
     public JPanel panelChats;
-    public JPanel panelNotificaciones;
+    public JPaginaNotificacion panelNotificaciones;
     public JScrollPane panelPerfil;
 
     public JPaginaRedSocial(JMainFrame parent) {
@@ -88,8 +88,7 @@ public class JPaginaRedSocial extends JPanel {
         panelChats = new JPanel();
         panelChats.add(new JLabel("Panel 2"));
 
-        panelNotificaciones = new JPanel();
-        panelNotificaciones.add(new JLabel("Panel 3"));
+        panelNotificaciones = new JPaginaNotificacion(Gestor.sesionIniciada);
 
         panelPerfil = new JScrollPane();
 

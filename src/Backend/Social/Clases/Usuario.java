@@ -116,6 +116,9 @@ public class Usuario {
     public ArrayList<Mascota> getMascotas() {
         return mascotas;
     }
+    public HashMap<String, Chat> getChats() {
+        return chats;
+    }
     public LinkedHashSet<Notificacion<?>> getNotificaciones() {
         return notificaciones;
     }

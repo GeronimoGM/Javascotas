@@ -14,6 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
 import Backend.Gestor.Clases.Gestor;
+import Backend.Social.Clases.Usuario;
 import Frontend.JMainFrame;
 
 public class JPaginaRedSocial extends JPanel {
@@ -49,7 +50,7 @@ public class JPaginaRedSocial extends JPanel {
         chats = new JButton("Chats");
         chats.setAlignmentX(Component.CENTER_ALIGNMENT);
         chats.setFocusPainted(false);
-        chats.addActionListener(e -> pestanas.setSelectedIndex(1));
+        chats.addActionListener(e -> {cargarChats(Gestor.sesionIniciada); pestanas.setSelectedIndex(1);});
 
         notificaciones = new JButton("Notificaciones");
         notificaciones.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -86,7 +87,6 @@ public class JPaginaRedSocial extends JPanel {
         panelExplorar.add(new JLabel("Panel 1"));
 
         panelChats = new JPanel();
-        panelChats.add(new JLabel("Panel 2"));
 
         panelNotificaciones = new JPaginaNotificacion(Gestor.sesionIniciada);
 
@@ -117,5 +117,11 @@ public class JPaginaRedSocial extends JPanel {
         pestanas.repaint();
 
         pestanas.setSelectedIndex(3);
+    }
+
+    private void cargarChats(Usuario emisor) {
+        panelChats.removeAll();
+        JPaginaChats paginaChats = new JPaginaChats(emisor);
+        panelChats.add(paginaChats, BorderLayout.CENTER);
     }
 }

@@ -8,10 +8,15 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import Backend.Gestor.Clases.Gestor;
+import Backend.Gestor.Excepciones.ContrasenaIncorrectaException;
+import Backend.Gestor.Excepciones.UsuarioNoExistenteException;
+import Backend.Social.Clases.Usuario;
 import Frontend.JMainFrame;
 
 public class JPaginaInicioSesion extends JPanel {
@@ -97,7 +102,7 @@ public class JPaginaInicioSesion extends JPanel {
         iniciarSesion.addActionListener(e -> iniciarSesion());
 
         // Layout
-        this.add(Box.createRigidArea(new Dimension(0, 25)));
+        // this.add(Box.createRigidArea(new Dimension(0, 25)));
         this.add(header);
         this.add(Box.createVerticalGlue());
         this.add(panelUsername);
@@ -108,9 +113,21 @@ public class JPaginaInicioSesion extends JPanel {
         this.add(Box.createRigidArea(new Dimension(0, 25)));
     }
 
-    private void iniciarSesion() {
+    private void iniciarSesion( ) {
         parent.paginaRedSocial = new JPaginaRedSocial(parent);
+         char[] passwordChars = inputContrasena.getPassword();
+        String password = new String(passwordChars);
+        try {
+            Gestor.iniciarSesion(inputUsername.getText(), password);
+        } catch (UsuarioNoExistenteException e) {
+            JOptionPane.showMessageDialog(this, "No existe un usuario con ese nombre", "Error", JOptionPane.ERROR_MESSAGE);
+            return ;
+        }catch(ContrasenaIncorrectaException a){
+            JOptionPane.showMessageDialog(this, "Contraseñia incorrecta, pruebe con 1234", "Error", JOptionPane.ERROR_MESSAGE);
+            return ;
+        }
+
         parent.add(parent.paginaRedSocial, "paginaRedSocial");
-        parent.showPanel("paginaRedSocial"); // TODO: implementar funcionalidad real
+        parent.showPanel("paginaRedSocial");
     }
 }

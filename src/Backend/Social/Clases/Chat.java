@@ -27,7 +27,7 @@ public class Chat {
     }
     // Métodos
     public void enviarMensaje(String texto) {
-        Mensaje mensaje = new Mensaje(receptor, texto);
+        Mensaje mensaje = new Mensaje(emisor, texto);
         mensajes.add(mensaje);
         Usuario usuarioReceptor = null;
         try {

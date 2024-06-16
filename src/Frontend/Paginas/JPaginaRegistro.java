@@ -4,7 +4,9 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.io.File;
-
+import java.io.IOException;
+import java.time.LocalDate;
+import javax.management.InvalidAttributeValueException;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -20,6 +22,10 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 
+import Backend.Gestor.Clases.Gestor;
+import Backend.Gestor.Excepciones.UsuarioYaExistenteException;
+import Backend.Social.Clases.Usuario;
+import Backend.Social.Enums.Sexo;
 import Frontend.JMainFrame;
 
 public class JPaginaRegistro extends JPanel {
@@ -38,7 +44,7 @@ public class JPaginaRegistro extends JPanel {
     public JPanel panelContrasena;
     public JLabel labelContrasena;
     public JPasswordField inputContrasena;
-    
+
     public JPanel panelNacimiento;
     public JLabel labelNacimiento;
     public DatePicker inputNacimiento;
@@ -53,7 +59,7 @@ public class JPaginaRegistro extends JPanel {
     public JComboBox<String> inputSexo;
 
     public JButton registrarse;
-    
+
     public JPaginaRegistro(JMainFrame parent) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -70,7 +76,7 @@ public class JPaginaRegistro extends JPanel {
         titulo = new JLabel("Registrarse");
         titulo.setFont(new Font("Arial", Font.BOLD, 36));
         titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
-        
+
         header.add(Box.createRigidArea(new Dimension(25, 0)));
         header.add(atras);
         header.add(Box.createHorizontalGlue());
@@ -94,7 +100,7 @@ public class JPaginaRegistro extends JPanel {
         panelUsername.add(labelUsername);
         panelUsername.add(Box.createRigidArea(new Dimension(0, 5)));
         panelUsername.add(inputUsername);
-        
+
         // Panel nombre
         panelNombre = new JPanel();
         panelNombre.setLayout(new BoxLayout(panelNombre, BoxLayout.Y_AXIS));
@@ -127,7 +133,7 @@ public class JPaginaRegistro extends JPanel {
 
         panelContrasena.add(labelContrasena);
         panelContrasena.add(Box.createRigidArea(new Dimension(0, 5)));
-        panelContrasena.add(inputContrasena);        
+        panelContrasena.add(inputContrasena);
 
         // Panel nacimiento
         panelNacimiento = new JPanel();
@@ -142,7 +148,7 @@ public class JPaginaRegistro extends JPanel {
         inputNacimiento.setAlignmentY(Component.CENTER_ALIGNMENT);
         inputNacimiento.setAlignmentX(Component.CENTER_ALIGNMENT);
         inputNacimiento.setMaximumSize(new Dimension(200, 25));
-        
+
         panelNacimiento.add(labelNacimiento);
         panelNacimiento.add(Box.createRigidArea(new Dimension(0, 5)));
         panelNacimiento.add(inputNacimiento);
@@ -173,7 +179,7 @@ public class JPaginaRegistro extends JPanel {
         labelSexo.setAlignmentX(Component.CENTER_ALIGNMENT);
         labelSexo.setAlignmentY(Component.CENTER_ALIGNMENT);
 
-        inputSexo = new JComboBox<>(new String[] {"Masculino", "Femenino"});
+        inputSexo = new JComboBox<>(new String[] { "Masculino", "Femenino" });
         inputSexo.setAlignmentY(Component.CENTER_ALIGNMENT);
         inputSexo.setAlignmentX(Component.CENTER_ALIGNMENT);
         inputSexo.setMaximumSize(new Dimension(200, 25));
@@ -187,6 +193,8 @@ public class JPaginaRegistro extends JPanel {
         registrarse.setAlignmentX(Component.CENTER_ALIGNMENT);
         registrarse.setFocusPainted(false);
         registrarse.addActionListener(e -> registrarse());
+        
+
 
         // Layout
         this.add(Box.createRigidArea(new Dimension(0, 25)));
@@ -210,7 +218,7 @@ public class JPaginaRegistro extends JPanel {
 
     private void seleccionarFotoDePerfil() {
         JFileChooser fileChooser = new JFileChooser();
-        
+
         // Crear un filtro para archivos PNG y JPG
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de imagen", "png", "jpg");
         fileChooser.setFileFilter(filter);
@@ -225,12 +233,63 @@ public class JPaginaRegistro extends JPanel {
                 fotoDePerfil = archivoSeleccionado;
                 labelFoto.setText("Foto seleccionada: " + archivoSeleccionado.getName());
             } else {
-                JOptionPane.showMessageDialog(this, "Seleccione un archivo PNG o JPG.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Seleccione un archivo PNG o JPG.", "Error",
+                        JOptionPane.ERROR_MESSAGE);
             }
         }
     }
 
-    private void registrarse() {
-        
+    private void registrarse(){
+
+        if (inputUsername.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Username sin completar", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (inputNombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Nombre sin completar", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        char[] passwordChars = inputContrasena.getPassword();
+        String password = new String(passwordChars);
+
+        if (password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Contraseña sin completar", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        LocalDate date = inputNacimiento.getDate();
+        if (inputNacimiento.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Fecha de nacimiento sin completar", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (fotoDePerfil==null) {
+            JOptionPane.showMessageDialog(this, "Foto de perfil sin completar", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        int indexSexo = inputSexo.getSelectedIndex();
+        Sexo sexo;
+
+        if (indexSexo == 0) {
+            sexo = Sexo.MASCULINO;
+        } else {
+            sexo = Sexo.FEMENINO;
+        }
+
+        try {
+            Gestor.registrarse(
+                    new Usuario(inputUsername.getText(), inputNombre.getText(), password, date, fotoDePerfil, sexo));
+        } catch (UsuarioYaExistenteException e) {
+            JOptionPane.showMessageDialog(this, "Usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }catch(InvalidAttributeValueException a){
+            JOptionPane.showMessageDialog(this, "La fecha de nacimiento no puede ser futura", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }catch (IOException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "IOException", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        JOptionPane.showMessageDialog(this, "Se ha registrado exitosamente!!!", "Registro!", JOptionPane.INFORMATION_MESSAGE);
     }
+
 }

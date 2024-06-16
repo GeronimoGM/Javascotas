@@ -1,9 +1,7 @@
 package Frontend.Paginas;
-
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -12,7 +10,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-
 import Backend.Gestor.Clases.Gestor;
 import Backend.Gestor.Excepciones.ContrasenaIncorrectaException;
 import Backend.Gestor.Excepciones.UsuarioNoExistenteException;

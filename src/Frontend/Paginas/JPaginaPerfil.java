@@ -16,6 +16,7 @@ import javax.swing.ScrollPaneConstants;
 
 import Backend.Mascotas.Clases.Abstracta.Mascota;
 import Backend.Social.Clases.Usuario;
+import Backend.Social.Enums.Sexo;
 import Frontend.Componentes.JMascota;
 
 public class JPaginaPerfil extends JScrollPane {
@@ -60,7 +61,7 @@ public class JPaginaPerfil extends JScrollPane {
         edad = new JLabel("Edad: " + Integer.toString(usuario.getEdad()));
         edad.setFont(new Font("Arial", Font.BOLD, 24));
 
-        if (usuario.getSexo() == 'm') {
+        if (usuario.getSexo() == Sexo.MASCULINO) {
             sexo = new JLabel("Sexo: masculino");
         } else {
             sexo = new JLabel("Sexo: femenino");

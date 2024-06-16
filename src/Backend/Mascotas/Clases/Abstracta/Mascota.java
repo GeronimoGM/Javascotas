@@ -4,14 +4,16 @@ import java.time.LocalDate;
 
 import javax.management.InvalidAttributeValueException;
 
+import Backend.Social.Enums.Sexo;
+
 public abstract class Mascota {
     private String nombre;
     private LocalDate fechaDeNacimiento;
     @SuppressWarnings("unused")
     private int edad;
-    private char sexo;
+    private Sexo sexo;
     // Constructores
-    public Mascota(String nombre, LocalDate fechaDeNacimiento, char sexo) throws InvalidAttributeValueException {
+    public Mascota(String nombre, LocalDate fechaDeNacimiento, Sexo sexo) throws InvalidAttributeValueException {
         this.nombre = nombre;
         setFechaDeNacimiento(fechaDeNacimiento);
         setSexo(sexo);
@@ -41,13 +43,10 @@ public abstract class Mascota {
             this.edad = edad;
         }
     }
-    public char getSexo() {
+    public Sexo getSexo() {
         return sexo;
     }
-    public void setSexo(char sexo) throws InvalidAttributeValueException {
-        sexo = Character.toLowerCase(sexo);
-        if (sexo != 'f' && sexo != 'm') {
-            throw new InvalidAttributeValueException("El sexo solo puede ser femenino(f) o masculino(m)");
-        }
+    public void setSexo(Sexo sexo){
+        this.sexo = sexo;
     }
 }

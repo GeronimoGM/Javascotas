@@ -5,12 +5,13 @@ import java.time.LocalDate;
 import javax.management.InvalidAttributeValueException;
 
 import Backend.Mascotas.Clases.Abstracta.Mascota;
+import Backend.Social.Enums.Sexo;
 
 public class Conejo extends Mascota {
     private String comidaFavorita;
     private double tamanioOrejas;
     // Constructores
-    public Conejo(String nombre, LocalDate fechaNacimiento, char sexo, String comidaFavorita,
+    public Conejo(String nombre, LocalDate fechaNacimiento, Sexo sexo, String comidaFavorita,
             double tamanioOrejas) throws InvalidAttributeValueException {
         super(nombre, fechaNacimiento, sexo);
         this.comidaFavorita = comidaFavorita;

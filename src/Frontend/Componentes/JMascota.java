@@ -13,6 +13,7 @@ import Backend.Mascotas.Clases.Abstracta.Mascota;
 import Backend.Mascotas.Clases.Concretas.Conejo;
 import Backend.Mascotas.Clases.Concretas.Gato;
 import Backend.Mascotas.Clases.Concretas.Perro;
+import Backend.Social.Enums.Sexo;
 
 public class JMascota extends JPanel {
     public JLabel tipoMascota;
@@ -40,7 +41,7 @@ public class JMascota extends JPanel {
         edad = new JLabel("Edad: " + Integer.toString(mascota.getEdad()));
         edad.setFont(new Font("Arial", Font.BOLD, 16));
 
-        if (mascota.getSexo() == 'm') {
+        if (mascota.getSexo() == Sexo.MASCULINO) {
             sexo = new JLabel("Sexo: masculino");
         } else {
             sexo = new JLabel("Sexo: femenino");

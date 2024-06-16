@@ -5,6 +5,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.io.File;
+import java.io.IOException;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -21,6 +22,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import Backend.Gestor.Clases.Gestor;
+import Backend.Social.Clases.Publicacion;
 import Frontend.Paginas.JPaginaPerfil;
 
 public class JFormPublicar extends JFrame {
@@ -177,6 +179,35 @@ public class JFormPublicar extends JFrame {
     }
 
     private void publicar() {
+        int index = inputMascotas.getSelectedIndex();
 
+        String descripcion = inputDescripcion.getText().trim();
+
+        if (descripcion.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No se puede publicar con una descripción vacía", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (fotoPublicacion == null) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una imagen para la publicación", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+            Publicacion publicacion = new Publicacion(
+                Gestor.sesionIniciada,
+                Gestor.sesionIniciada.getMascotas().get(index),
+                fotoPublicacion,
+                descripcion
+            );
+            Gestor.sesionIniciada.publicar(publicacion);
+            parent.panelPublicaciones.add(new JPublicacion(parent, publicacion));
+            inputDescripcion.setText("");
+            labelFoto.setText("Seleccionar foto de publicación");
+            fotoPublicacion = null;
+            this.setVisible(false);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "IOException", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
     }
 }

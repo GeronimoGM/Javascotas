@@ -1,6 +1,12 @@
 package Backend.Social.Clases;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.TreeSet;
@@ -19,12 +25,12 @@ public class Publicacion implements Likeable {
     private TreeSet<Comentario> comentarios;
     private HashSet<Like> likes;
     // Constructores
-    public Publicacion(Usuario usuario, Mascota mascota, File foto, String descripcion) {
+    public Publicacion(Usuario usuario, Mascota mascota, File foto, String descripcion) throws IOException {
         id = UUID.randomUUID();
         this.username = usuario.getUsername();
         this.hora = LocalDateTime.now();
         this.mascota = mascota;
-        this.foto = foto;
+        setfoto(foto);
         this.descripcion = descripcion;
         comentarios = new TreeSet<>();
         likes = new HashSet<>();
@@ -51,8 +57,27 @@ public class Publicacion implements Likeable {
     public File getFoto() {
         return foto;
     }
-    public void setFoto(File foto) {
-        this.foto = foto;
+    public void setfoto(File foto) throws IOException {
+        if (foto != null && foto.exists()) {
+            Path sourcePath = foto.toPath();
+            Path destinationPath = Paths.get("files", "publicacionmes", id + getFileExtension(foto));
+
+            Files.createDirectories(destinationPath.getParent());
+            Path copiedFilePath = Files.copy(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
+
+            this.foto = copiedFilePath.toFile();
+        } else {
+            throw new FileNotFoundException("No se encuentra el archivo");
+        }
+    }
+    private static String getFileExtension(File file) {
+        String extension = "";
+        String fileName = file.getName();
+        int dotIndex = fileName.lastIndexOf('.');
+        if (dotIndex >= 0 && dotIndex < fileName.length() - 1) {
+            extension = fileName.substring(dotIndex);
+        }
+        return extension;
     }
     public String getDescripcion() {
         return descripcion;

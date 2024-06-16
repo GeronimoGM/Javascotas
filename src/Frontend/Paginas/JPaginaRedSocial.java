@@ -18,6 +18,8 @@ import Backend.Social.Clases.Usuario;
 import Frontend.JMainFrame;
 
 public class JPaginaRedSocial extends JPanel {
+    public JMainFrame parent;
+    
     public JPanel sidebar;
     public JButton explorar;
     public JButton chats;
@@ -32,6 +34,8 @@ public class JPaginaRedSocial extends JPanel {
     public JScrollPane panelPerfil;
 
     public JPaginaRedSocial(JMainFrame parent) {
+        this.parent = parent;
+
         this.setLayout(new BorderLayout());
         this.setAlignmentX(Component.CENTER_ALIGNMENT);
         
@@ -65,6 +69,7 @@ public class JPaginaRedSocial extends JPanel {
         cerrarSesion = new JButton("Cerrar sesión");
         cerrarSesion.setAlignmentX(Component.CENTER_ALIGNMENT);
         cerrarSesion.setFocusPainted(false);
+        cerrarSesion.addActionListener(e -> cerrarSesion());
         
         sidebar.add(Box.createRigidArea(new Dimension(0, 25)));
         sidebar.add(Box.createVerticalGlue()); 
@@ -102,6 +107,11 @@ public class JPaginaRedSocial extends JPanel {
         // Layout
         this.add(sidebar, BorderLayout.WEST);
         this.add(pestanas, BorderLayout.CENTER);
+    }
+
+    private void cerrarSesion() {
+        Gestor.cerrarSesion();
+        parent.showPanel("paginaPrincipal");
     }
 
     public void mostrarPerfil() {

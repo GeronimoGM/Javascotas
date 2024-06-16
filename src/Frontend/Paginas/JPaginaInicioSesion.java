@@ -113,8 +113,7 @@ public class JPaginaInicioSesion extends JPanel {
     }
 
     private void iniciarSesion( ) {
-        parent.paginaRedSocial = new JPaginaRedSocial(parent);
-         char[] passwordChars = inputContrasena.getPassword();
+        char[] passwordChars = inputContrasena.getPassword();
         String password = new String(passwordChars);
         try {
             Gestor.iniciarSesion(inputUsername.getText(), password);
@@ -125,7 +124,8 @@ public class JPaginaInicioSesion extends JPanel {
             JOptionPane.showMessageDialog(this, "Contraseñia incorrecta, pruebe con 1234", "Error", JOptionPane.ERROR_MESSAGE);
             return ;
         }
-
+        
+        parent.paginaRedSocial = new JPaginaRedSocial(parent);
         parent.add(parent.paginaRedSocial, "paginaRedSocial");
         parent.showPanel("paginaRedSocial");
     }

@@ -104,7 +104,7 @@ public class JPaginaRedSocial extends JPanel {
         this.add(pestanas, BorderLayout.CENTER);
     }
 
-    private void mostrarPerfil() {
+    public void mostrarPerfil() {
         try {
             JPaginaPerfil perfilPanel = new JPaginaPerfil(this, Gestor.sesionIniciada);
 

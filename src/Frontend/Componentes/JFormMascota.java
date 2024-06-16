@@ -500,6 +500,8 @@ public class JFormMascota extends JFrame {
                 return;
         }
 
+        parent.parent.mostrarPerfil();
+
         this.setVisible(false);
     }
 }

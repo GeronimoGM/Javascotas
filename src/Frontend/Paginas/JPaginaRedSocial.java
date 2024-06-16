@@ -30,7 +30,7 @@ public class JPaginaRedSocial extends JPanel {
     public JTabbedPane pestanas;
     public JPanel panelExplorar;
     public JPanel panelChats;
-    public JPaginaNotificacion panelNotificaciones;
+    public JScrollPane panelNotificaciones;
     public JScrollPane panelPerfil;
 
     public JPaginaRedSocial(JMainFrame parent) {
@@ -59,7 +59,7 @@ public class JPaginaRedSocial extends JPanel {
         notificaciones = new JButton("Notificaciones");
         notificaciones.setAlignmentX(Component.CENTER_ALIGNMENT);
         notificaciones.setFocusPainted(false);
-        notificaciones.addActionListener(e -> pestanas.setSelectedIndex(2));
+        notificaciones.addActionListener(e -> mostrarNotificaciones());
 
         perfil = new JButton("Perfil");
         perfil.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -93,7 +93,7 @@ public class JPaginaRedSocial extends JPanel {
 
         panelChats = new JPanel();
 
-        panelNotificaciones = new JPaginaNotificacion(Gestor.sesionIniciada);
+        panelNotificaciones = new JScrollPane();
 
         panelPerfil = new JScrollPane();
 
@@ -133,5 +133,17 @@ public class JPaginaRedSocial extends JPanel {
         panelChats.removeAll();
         JPaginaChats paginaChats = new JPaginaChats(emisor);
         panelChats.add(paginaChats, BorderLayout.CENTER);
+    }
+
+    private void mostrarNotificaciones() {
+        try {
+            JPaginaNotificacion notificacionPanel = new JPaginaNotificacion(Gestor.sesionIniciada);
+            panelNotificaciones.setViewportView(notificacionPanel);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        pestanas.revalidate();
+        pestanas.repaint();
+        pestanas.setSelectedIndex(2);
     }
 }

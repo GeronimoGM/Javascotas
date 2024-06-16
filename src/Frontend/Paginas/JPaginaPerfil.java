@@ -20,6 +20,7 @@ import Backend.Mascotas.Clases.Abstracta.Mascota;
 import Backend.Social.Clases.Publicacion;
 import Backend.Social.Clases.Usuario;
 import Backend.Social.Enums.Sexo;
+import Frontend.Componentes.JFormPublicar;
 import Frontend.Componentes.JMascota;
 import Frontend.Componentes.JPublicacion;
 
@@ -40,6 +41,8 @@ public class JPaginaPerfil extends JScrollPane {
     public JPanel panelOpciones;
     public JButton publicar;
     public JButton mascota;
+
+    public JFormPublicar formPublicar;
 
     public JPanel panelMascotasYPublicaciones;
     public JLabel labelMascotas;
@@ -102,6 +105,8 @@ public class JPaginaPerfil extends JScrollPane {
            panelOpciones.add(Box.createHorizontalGlue());
            panelOpciones.add(mascota);
            panelOpciones.add(Box.createHorizontalGlue());
+
+           formPublicar = new JFormPublicar(this);
         }
         else {
            // TODO: botonMensaje
@@ -157,7 +162,7 @@ public class JPaginaPerfil extends JScrollPane {
     }
 
     private void publicar() {
-        // TODO: frame form publicar
+        formPublicar.setVisible(true);
     }
 
     private void anadirMascota() {

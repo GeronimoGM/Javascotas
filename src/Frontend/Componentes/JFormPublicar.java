@@ -181,6 +181,11 @@ public class JFormPublicar extends JFrame {
     private void publicar() {
         int index = inputMascotas.getSelectedIndex();
 
+        if (index == -1) {
+            JOptionPane.showMessageDialog(this, "No se puede publicar sin ninguna mascota registrada", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         String descripcion = inputDescripcion.getText().trim();
 
         if (descripcion.isEmpty()) {

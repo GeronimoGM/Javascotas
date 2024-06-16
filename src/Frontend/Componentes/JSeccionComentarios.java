@@ -7,6 +7,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -74,12 +75,17 @@ public class JSeccionComentarios extends JFrame {
     }
 
     private void comentar() {
-        Comentario toAdd = new Comentario(Gestor.sesionIniciada, inputComentario.getText());
-        System.out.println(parent.publicacion.getComentarios());
-        parent.publicacion.comentar(toAdd);
-        panelComentarios.add(new JComentario(this, toAdd));
-        panelComentarios.revalidate();
-        panelComentarios.repaint();
-        inputComentario.setText("");
+        String textoComentario = inputComentario.getText().trim();
+        if (!textoComentario.isEmpty()) {
+            Comentario toAdd = new Comentario(Gestor.sesionIniciada, textoComentario);
+            parent.publicacion.comentar(toAdd);
+            panelComentarios.add(new JComentario(this, toAdd));
+            panelComentarios.revalidate();
+            panelComentarios.repaint();
+            inputComentario.setText("");
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "No se puede comentar un texto vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }

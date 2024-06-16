@@ -89,7 +89,7 @@ public class Usuario {
 
             this.foto = copiedFilePath.toFile();
         } else {
-            throw new FileNotFoundException();
+            throw new FileNotFoundException("No se encuentra el archivo");
         }
     }
     private static String getFileExtension(File file) {

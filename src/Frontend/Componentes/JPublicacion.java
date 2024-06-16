@@ -14,6 +14,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Backend.Gestor.Clases.Gestor;
+import Backend.Social.Clases.Like;
 import Backend.Social.Clases.Publicacion;
 import Frontend.Paginas.JPaginaPerfil;
 
@@ -29,6 +31,7 @@ public class JPublicacion extends JPanel {
     public JLabel foto;
     public JPanel footer;
     public JButton like;
+    public JLabel cantLikes;
     public JButton comentarios;
 
     public JSeccionComentarios seccionComentarios;
@@ -68,6 +71,10 @@ public class JPublicacion extends JPanel {
         like = new JButton("Like");
         like.setAlignmentX(Component.CENTER_ALIGNMENT);
         like.setFocusPainted(false);
+        like.addActionListener(e -> likear());
+
+        cantLikes = new JLabel("Likes: " + Integer.toString(publicacion.getCantidadLikes()));
+        cantLikes.setFont(new Font("Arial", Font.BOLD, 12));
 
         comentarios = new JButton("Comentarios");
         comentarios.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -78,6 +85,8 @@ public class JPublicacion extends JPanel {
         
         footer.add(Box.createGlue());
         footer.add(like);
+        footer.add(Box.createGlue());
+        footer.add(cantLikes);
         footer.add(Box.createGlue());
         footer.add(comentarios);
         footer.add(Box.createGlue());
@@ -92,5 +101,20 @@ public class JPublicacion extends JPanel {
 
     private void abrirComentarios() {
         seccionComentarios.setVisible(true);
+    }
+
+    private void likear() {
+        Like likeToAdd = new Like(Gestor.sesionIniciada.getUsername());
+        if (publicacion.getLikes().contains(likeToAdd)) {
+            publicacion.unlikear(Gestor.sesionIniciada);
+            cantLikes.setText("Likes: " + Integer.toString(publicacion.getCantidadLikes()));
+            like.setText("Like");
+            likeToAdd.notificar(parent.usuario);
+        }
+        else {
+            publicacion.likear(Gestor.sesionIniciada);
+            cantLikes.setText("Likes: " + Integer.toString(publicacion.getCantidadLikes()));
+            like.setText("Unlike");
+        }
     }
 }

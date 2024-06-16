@@ -59,7 +59,7 @@ public class JComentario extends JPanel {
         textoYHora.add(texto);
         textoYHora.add(hora);
 
-        cantLikes = new JLabel(Integer.toString(comentario.getCantidadLikes()));
+        cantLikes = new JLabel("Likes: " + Integer.toString(comentario.getCantidadLikes()));
         cantLikes.setFont(new Font("Arial", Font.BOLD, 12));
 
         panelComentario.add(username);
@@ -85,13 +85,13 @@ public class JComentario extends JPanel {
         Like likeToAdd = new Like(Gestor.sesionIniciada.getUsername());
         if (comentario.getLikes().contains(likeToAdd)) {
             comentario.unlikear(Gestor.sesionIniciada);
-            cantLikes.setText(Integer.toString(comentario.getCantidadLikes()));
+            cantLikes.setText("Likes: " + Integer.toString(comentario.getCantidadLikes()));
             like.setText("Like");
             likeToAdd.notificar(parent.parent.parent.usuario);
         }
         else {
             comentario.likear(Gestor.sesionIniciada);
-            cantLikes.setText(Integer.toString(comentario.getCantidadLikes()));
+            cantLikes.setText("Likes: " + Integer.toString(comentario.getCantidadLikes()));
             like.setText("Unlike");
         }
     }

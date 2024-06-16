@@ -12,6 +12,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
+import Backend.Gestor.Clases.Gestor;
 import Backend.Social.Clases.Comentario;
 
 public class JSeccionComentarios extends JFrame {
@@ -20,6 +21,8 @@ public class JSeccionComentarios extends JFrame {
     public JScrollPane scrollPane;
 
     public JPanel container;
+    
+    public JPanel panelComentarios;
 
     public JPanel panelComentar;
     public JTextField inputComentario;
@@ -45,15 +48,19 @@ public class JSeccionComentarios extends JFrame {
         comentar = new JButton("Comentar");
         comentar.setAlignmentX(Component.CENTER_ALIGNMENT);
         comentar.setFocusPainted(false);
+        comentar.addActionListener(e -> comentar());
+
+        panelComentarios = new JPanel();
+        panelComentarios.setLayout(new BoxLayout(panelComentarios, BoxLayout.Y_AXIS));
 
         for (Comentario comentario : parent.publicacion.getComentarios()) {
-            container.add(new JComentario(this, comentario));
+            panelComentarios.add(new JComentario(this, comentario));
         }
         
         panelComentar.add(inputComentario);
         panelComentar.add(comentar);
 
-        // TODO: añadir panelcomentarios
+        container.add(panelComentarios);
 
         container.add(Box.createVerticalGlue());
         container.add(panelComentar);
@@ -64,5 +71,15 @@ public class JSeccionComentarios extends JFrame {
         scrollPane.getVerticalScrollBar().setBlockIncrement(64);
 
         this.add(scrollPane);
+    }
+
+    private void comentar() {
+        Comentario toAdd = new Comentario(Gestor.sesionIniciada, inputComentario.getText());
+        System.out.println(parent.publicacion.getComentarios());
+        parent.publicacion.comentar(toAdd);
+        panelComentarios.add(new JComentario(this, toAdd));
+        panelComentarios.revalidate();
+        panelComentarios.repaint();
+        inputComentario.setText("");
     }
 }

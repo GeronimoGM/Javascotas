@@ -18,6 +18,8 @@ import Backend.Social.Clases.Publicacion;
 import Frontend.Paginas.JPaginaPerfil;
 
 public class JPublicacion extends JPanel {
+    public Publicacion publicacion;
+    
     public JLabel nombre;
     public JLabel mascota;
     public JLabel descripcion;
@@ -26,8 +28,12 @@ public class JPublicacion extends JPanel {
     public JPanel footer;
     public JButton like;
     public JButton comentarios;
+
+    public JSeccionComentarios seccionComentarios;
     
     public JPublicacion(JPaginaPerfil parent, Publicacion publicacion) {
+        this.publicacion = publicacion;
+        
         this.setBorder(BorderFactory.createLineBorder(Color.black, 2));
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -62,6 +68,9 @@ public class JPublicacion extends JPanel {
         comentarios = new JButton("Comentarios");
         comentarios.setAlignmentX(Component.CENTER_ALIGNMENT);
         comentarios.setFocusPainted(false);
+        comentarios.addActionListener(e -> abrirComentarios());
+
+        seccionComentarios = new JSeccionComentarios(this);
         
         footer.add(Box.createGlue());
         footer.add(like);
@@ -75,5 +84,9 @@ public class JPublicacion extends JPanel {
         this.add(hora);
         this.add(foto);
         this.add(footer);
+    }
+
+    private void abrirComentarios() {
+        seccionComentarios.setVisible(true);
     }
 }

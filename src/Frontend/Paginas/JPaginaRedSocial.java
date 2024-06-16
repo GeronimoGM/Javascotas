@@ -10,8 +10,10 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
+import Backend.Gestor.Clases.Gestor;
 import Frontend.JMainFrame;
 
 public class JPaginaRedSocial extends JPanel {
@@ -26,7 +28,7 @@ public class JPaginaRedSocial extends JPanel {
     public JPanel panelExplorar;
     public JPanel panelChats;
     public JPanel panelNotificaciones;
-    public JPanel panelPerfil;
+    public JScrollPane panelPerfil;
 
     public JPaginaRedSocial(JMainFrame parent) {
         this.setLayout(new BorderLayout());
@@ -57,7 +59,7 @@ public class JPaginaRedSocial extends JPanel {
         perfil = new JButton("Perfil");
         perfil.setAlignmentX(Component.CENTER_ALIGNMENT);
         perfil.setFocusPainted(false);
-        perfil.addActionListener(e -> pestanas.setSelectedIndex(3));
+        perfil.addActionListener(e -> mostrarPerfil());
 
         cerrarSesion = new JButton("Cerrar sesión");
         cerrarSesion.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -89,8 +91,7 @@ public class JPaginaRedSocial extends JPanel {
         panelNotificaciones = new JPanel();
         panelNotificaciones.add(new JLabel("Panel 3"));
 
-        panelPerfil = new JPanel();
-        panelPerfil.add(new JLabel("Panel 4"));
+        panelPerfil = new JScrollPane();
 
         pestanas.add("panelExplorar", panelExplorar);
         pestanas.add("panelChats", panelChats);
@@ -102,5 +103,20 @@ public class JPaginaRedSocial extends JPanel {
         // Layout
         this.add(sidebar, BorderLayout.WEST);
         this.add(pestanas, BorderLayout.CENTER);
+    }
+
+    private void mostrarPerfil() {
+        try {
+            JPaginaPerfil perfilPanel = new JPaginaPerfil(this, Gestor.sesionIniciada);
+
+            pestanas.setComponentAt(3, perfilPanel);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        pestanas.revalidate();
+        pestanas.repaint();
+
+        pestanas.setSelectedIndex(3);
     }
 }

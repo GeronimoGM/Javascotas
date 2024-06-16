@@ -16,7 +16,6 @@ import javax.swing.JTextField;
 import Backend.Gestor.Clases.Gestor;
 import Backend.Gestor.Excepciones.ContrasenaIncorrectaException;
 import Backend.Gestor.Excepciones.UsuarioNoExistenteException;
-import Backend.Social.Clases.Usuario;
 import Frontend.JMainFrame;
 
 public class JPaginaInicioSesion extends JPanel {

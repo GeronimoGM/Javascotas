@@ -21,7 +21,6 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import Backend.Gestor.Clases.Gestor;
-import Backend.Mascotas.Clases.Abstracta.Mascota;
 import Frontend.Paginas.JPaginaPerfil;
 
 public class JFormPublicar extends JFrame {

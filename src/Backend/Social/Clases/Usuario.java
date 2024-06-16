@@ -1,6 +1,12 @@
 package Backend.Social.Clases;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,12 +33,12 @@ public class Usuario {
     private LinkedHashSet<Notificacion<?>> notificaciones;
     // Constructores
     public Usuario(String username, String nombre, String contrasena, LocalDate fechaDeNacimiento, File foto,
-            Sexo sexo) throws InvalidAttributeValueException {
+            Sexo sexo) throws InvalidAttributeValueException, IOException {
         this.username = username;
         this.nombre = nombre;
         this.contrasena = contrasena;
         setFechaNacimiento(fechaDeNacimiento);
-        this.foto = foto;
+        setfoto(foto);
         this.sexo = sexo;
         this.publicaciones = new LinkedHashSet<>();
         mascotas = new ArrayList<>();
@@ -73,8 +79,27 @@ public class Usuario {
     public File getFoto() {
         return foto;
     }
-    public void setFoto(File foto) {
-        this.foto = foto;
+    public void setfoto(File foto) throws IOException {
+        if (foto != null && foto.exists()) {
+            Path sourcePath = foto.toPath();
+            Path destinationPath = Paths.get("files", "fotosDePerfil", username + getFileExtension(foto));
+
+            Files.createDirectories(destinationPath.getParent());
+            Path copiedFilePath = Files.copy(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
+
+            this.foto = copiedFilePath.toFile();
+        } else {
+            throw new FileNotFoundException();
+        }
+    }
+    private static String getFileExtension(File file) {
+        String extension = "";
+        String fileName = file.getName();
+        int dotIndex = fileName.lastIndexOf('.');
+        if (dotIndex >= 0 && dotIndex < fileName.length() - 1) {
+            extension = fileName.substring(dotIndex);
+        }
+        return extension;
     }
     public Sexo getSexo() {
         return sexo;

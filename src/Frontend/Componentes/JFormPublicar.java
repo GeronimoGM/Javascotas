@@ -66,7 +66,7 @@ public class JFormPublicar extends JFrame {
         panelTitulo = new JPanel();
         panelTitulo.setLayout(new BoxLayout(panelTitulo, BoxLayout.X_AXIS));
 
-        titulo = new JLabel("Registrarse");
+        titulo = new JLabel("Publicar");
         titulo.setFont(new Font("Arial", Font.BOLD, 36));
         titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
 

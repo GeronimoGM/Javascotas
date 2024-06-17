@@ -8,7 +8,6 @@ import java.awt.Dimension;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -28,7 +27,7 @@ public class JPaginaRedSocial extends JPanel {
     public JButton cerrarSesion;
 
     public JTabbedPane pestanas;
-    public JPanel panelExplorar;
+    public JScrollPane panelExplorar;
     public JPanel panelChats;
     public JScrollPane panelNotificaciones;
     public JScrollPane panelPerfil;
@@ -49,7 +48,7 @@ public class JPaginaRedSocial extends JPanel {
         explorar = new JButton("Explorar");
         explorar.setAlignmentX(Component.CENTER_ALIGNMENT);
         explorar.setFocusPainted(false);
-        explorar.addActionListener(e -> pestanas.setSelectedIndex(0));
+        explorar.addActionListener(e -> mostrarExplorar());
 
         chats = new JButton("Chats");
         chats.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -87,9 +86,8 @@ public class JPaginaRedSocial extends JPanel {
         // Pestañas
         pestanas = new JTabbedPane();
         pestanas.setLayout(new BoxLayout(pestanas, BoxLayout.Y_AXIS));
-        // TODO: borrar los labels de prueba (esto es solo para probar que funciona cambiar pestañas)
-        panelExplorar = new JPanel();
-        panelExplorar.add(new JLabel("Panel 1"));
+       
+        panelExplorar = new JScrollPane();
 
         panelChats = new JPanel();
 
@@ -145,5 +143,14 @@ public class JPaginaRedSocial extends JPanel {
         pestanas.revalidate();
         pestanas.repaint();
         pestanas.setSelectedIndex(2);
+    }
+
+    private void mostrarExplorar() {
+        JPaginaExplorar explorarPanel = new JPaginaExplorar(this);
+        pestanas.setComponentAt(0, explorarPanel);
+        
+        pestanas.revalidate();
+        pestanas.repaint();
+        pestanas.setSelectedIndex(0);
     }
 }

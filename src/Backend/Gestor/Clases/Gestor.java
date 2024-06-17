@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -39,6 +40,9 @@ public class Gestor {
         else {
             throw new UsuarioNoExistenteException("No existe un usuario con el username: " + username);
         }
+    }
+    public static Iterator<Usuario> getUsuarios() {
+        return usuarios.values().iterator();
     }
     // Métodos
     public static void registrarse(Usuario usuario) throws UsuarioYaExistenteException {

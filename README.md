@@ -30,8 +30,6 @@
 11. [Componentes](#componentes)
 12. [Páginas](#páginas)
 
----
-
 ## Información General
 
 ### Datos del Proyecto
@@ -133,3 +131,7 @@ Ante la necesidad de un selector de fechas en el código nativo de Swing, decidi
 * **JPaginaPrincipal:** se encarga de la parte visual previa al log in o sign in.
 * **JPaginaRedSocial:** se encarga de gestionar la parte visual de la página a la que se entra cuando se inicia sesión.
 * **JMainFrame:** ventana para visualizar todo el proyecto.
+
+## Bibliografía
+* **[Docuemntación de Swing](https://docs.oracle.com/javase%2F7%2Fdocs%2Fapi%2F/javax/swing/package-summary.html)**
+* **[ChatGPT](https://chatgpt.com/)**

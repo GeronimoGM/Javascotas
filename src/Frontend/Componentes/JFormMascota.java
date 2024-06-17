@@ -499,7 +499,7 @@ public class JFormMascota extends JFrame {
                 JOptionPane.showMessageDialog(this, "Tipo de mascota no reconocida", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
         }
-
+        Gestor.guardar();
         parent.parent.mostrarPerfil();
 
         this.setVisible(false);

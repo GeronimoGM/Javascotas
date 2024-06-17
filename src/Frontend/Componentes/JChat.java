@@ -45,6 +45,7 @@ public class JChat extends JFrame {
                     chat.enviarMensaje(message);
                     chatArea.append(Gestor.sesionIniciada.getUsername() + ": " + message + "\n");
                     inputField.setText("");
+                    Gestor.guardar();
                 }
             }
         });

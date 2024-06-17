@@ -3,6 +3,7 @@ package Frontend.Paginas;
 import javax.swing.*;
 
 import Backend.Social.Clases.Usuario;
+import Backend.Gestor.Clases.Gestor;
 import Backend.Social.Clases.Chat;
 import Frontend.Componentes.JChat;
 
@@ -29,6 +30,7 @@ public class JPaginaChats extends JPanel {
                 public void actionPerformed(ActionEvent e) {
                     JChat chatWindow = new JChat(emisor.getUsername(), receptor);
                     chatWindow.inicializar();
+                    Gestor.guardar();
                 }
             });
             add(chatButton);

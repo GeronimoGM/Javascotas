@@ -288,7 +288,7 @@ public class JPaginaRegistro extends JPanel {
             JOptionPane.showMessageDialog(this, e.getMessage(), "IOException", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+        Gestor.guardar();
         JOptionPane.showMessageDialog(this, "Se ha registrado exitosamente!!!", "Registro!", JOptionPane.INFORMATION_MESSAGE);
     }
 

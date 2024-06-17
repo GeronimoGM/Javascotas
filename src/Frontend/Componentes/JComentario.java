@@ -88,6 +88,7 @@ public class JComentario extends JPanel {
             cantLikes.setText("Likes: " + Integer.toString(comentario.getCantidadLikes()));
             like.setText("Like");
             likeToAdd.notificar(parent.parent.parent.usuario);
+            Gestor.guardar();
         }
         else {
             comentario.likear(Gestor.sesionIniciada);

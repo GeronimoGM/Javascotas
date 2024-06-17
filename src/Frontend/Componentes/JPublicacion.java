@@ -133,5 +133,6 @@ public class JPublicacion extends JPanel {
     }
     private void eliminarPublicacion() {
         parent.eliminarPublicacion(publicacion);
+        Gestor.guardar();
     }
 }

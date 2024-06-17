@@ -205,11 +205,11 @@ public class JFormPublicar extends JFrame {
                 descripcion
             );
             Gestor.sesionIniciada.publicar(publicacion);
-            parent.panelPublicaciones.add(new JPublicacion(parent, publicacion));
             inputDescripcion.setText("");
             labelFoto.setText("Seleccionar foto de publicación");
             fotoPublicacion = null;
             this.setVisible(false);
+            parent.parent.mostrarPerfil();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "IOException", JOptionPane.ERROR_MESSAGE);
             return;

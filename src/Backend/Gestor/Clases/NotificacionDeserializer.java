@@ -12,10 +12,8 @@ public class NotificacionDeserializer implements JsonDeserializer<Notificacion<?
     public Notificacion<?> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = json.getAsJsonObject();
 
-        // Extract the type of Notificadora
         String type = jsonObject.get("type").getAsString();
 
-        // Extract the actual Notificadora object
         JsonElement notificadoraElement = jsonObject.get("notificacion");
 
         if ("Like".equals(type)) {

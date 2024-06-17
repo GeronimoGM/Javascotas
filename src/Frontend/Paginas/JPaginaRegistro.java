@@ -289,6 +289,14 @@ public class JPaginaRegistro extends JPanel {
             return;
         }
         Gestor.guardar();
+
+        inputContrasena.setText(null);
+        labelFoto.setText("Foto seleccionada: ");
+        fotoDePerfil = null;
+        inputNacimiento.setText(null);
+        inputNombre.setText(null);
+        inputUsername.setText(null);
+
         JOptionPane.showMessageDialog(this, "Se ha registrado exitosamente!!!", "Registro!", JOptionPane.INFORMATION_MESSAGE);
     }
 

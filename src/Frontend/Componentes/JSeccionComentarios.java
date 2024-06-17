@@ -2,6 +2,9 @@ package Frontend.Componentes;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -54,7 +57,11 @@ public class JSeccionComentarios extends JFrame {
         panelComentarios = new JPanel();
         panelComentarios.setLayout(new BoxLayout(panelComentarios, BoxLayout.Y_AXIS));
 
-        for (Comentario comentario : parent.publicacion.getComentarios()) {
+        List<Comentario> comentariosList = new ArrayList<>(parent.publicacion.getComentarios());
+
+        Collections.reverse(comentariosList);
+
+        for (Comentario comentario : comentariosList) {
             panelComentarios.add(new JComentario(this, comentario));
         }
         

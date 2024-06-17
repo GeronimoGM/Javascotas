@@ -16,6 +16,8 @@ import Backend.Social.Enums.Sexo;
 import Frontend.Paginas.JPaginaExplorar;
 
 public class JUsuario extends JPanel {
+    public Usuario usuario;
+    
     public JPaginaExplorar parent;
 
     public JLabel foto;
@@ -28,6 +30,7 @@ public class JUsuario extends JPanel {
     public JButton ver;
 
     public JUsuario(JPaginaExplorar parent, Usuario usuario) {
+        this.usuario = usuario;
         this.parent = parent;
 
         this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
@@ -71,6 +74,6 @@ public class JUsuario extends JPanel {
     }
 
     private void ver() {
-
+        parent.mostrarPerfil(usuario);
     }
 }

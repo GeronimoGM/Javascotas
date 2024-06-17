@@ -1,6 +1,7 @@
 package Frontend.Paginas;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Font;
 import java.util.Iterator;
@@ -19,6 +20,8 @@ import Frontend.Componentes.JUsuario;
 public class JPaginaExplorar extends JScrollPane {
     public JPaginaRedSocial parent;
     
+    public JPanel explorar;
+
     public JPanel container;
 
     public JPanel header;
@@ -29,6 +32,9 @@ public class JPaginaExplorar extends JScrollPane {
     public JPaginaExplorar(JPaginaRedSocial parent) {
         this.parent = parent;
         
+        explorar = new JPanel();
+        explorar.setLayout(new CardLayout());
+
         container = new JPanel();
         container.setLayout(new BorderLayout());
 
@@ -61,9 +67,18 @@ public class JPaginaExplorar extends JScrollPane {
         container.add(header, BorderLayout.NORTH);
         container.add(usuarios, BorderLayout.CENTER);
 
-        this.setViewportView(container);
+        explorar.add(container, "paginaExplorar");
+
+        this.setViewportView(explorar);
         this.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         this.getVerticalScrollBar().setUnitIncrement(16);
         this.getVerticalScrollBar().setBlockIncrement(64);
+    }
+
+    public void mostrarPerfil(Usuario usuario) {
+        JPaginaPerfil paginaPerfil = new JPaginaPerfil(parent, usuario);
+        explorar.add(paginaPerfil, "paginaPerfil_" + usuario.getUsername());
+        CardLayout cl = (CardLayout) explorar.getLayout();
+        cl.show(explorar, "paginaPerfil_" + usuario.getUsername());
     }
 }

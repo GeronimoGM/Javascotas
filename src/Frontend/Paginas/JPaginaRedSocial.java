@@ -105,6 +105,8 @@ public class JPaginaRedSocial extends JPanel {
         // Layout
         this.add(sidebar, BorderLayout.WEST);
         this.add(pestanas, BorderLayout.CENTER);
+
+        mostrarExplorar();
     }
 
     private void cerrarSesion() {

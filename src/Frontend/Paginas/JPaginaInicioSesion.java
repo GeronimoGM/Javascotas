@@ -121,6 +121,9 @@ public class JPaginaInicioSesion extends JPanel {
             JOptionPane.showMessageDialog(this, "Contraseñia incorrecta, pruebe con 1234", "Error", JOptionPane.ERROR_MESSAGE);
             return ;
         }
+
+        inputContrasena.setText(null);
+        inputUsername.setText(null);
         
         parent.paginaRedSocial = new JPaginaRedSocial(parent);
         parent.add(parent.paginaRedSocial, "paginaRedSocial");

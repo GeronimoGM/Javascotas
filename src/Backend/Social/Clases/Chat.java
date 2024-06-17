@@ -34,7 +34,7 @@ public class Chat implements Serializable {
         try {
             usuarioReceptor = Gestor.getUsuario(receptor);
         } catch (UsuarioNoExistenteException e) {
-            // TODO: handle exception
+            System.out.println(e);
         }
         usuarioReceptor.anadirMensajeRecibido(emisor, mensaje);
         mensaje.notificar(usuarioReceptor);

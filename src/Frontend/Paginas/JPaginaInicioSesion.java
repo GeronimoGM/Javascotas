@@ -98,7 +98,7 @@ public class JPaginaInicioSesion extends JPanel {
         iniciarSesion.addActionListener(e -> iniciarSesion());
 
         // Layout
-        // this.add(Box.createRigidArea(new Dimension(0, 25)));
+        this.add(Box.createRigidArea(new Dimension(0, 25)));
         this.add(header);
         this.add(Box.createVerticalGlue());
         this.add(panelUsername);

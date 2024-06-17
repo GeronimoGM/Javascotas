@@ -185,4 +185,21 @@ public class JPaginaPerfil extends JScrollPane {
         chat = new JChat(Gestor.sesionIniciada.getUsername(), usuario.getUsername());
         chat.inicializar();
     }
+
+    public void eliminarPublicacion(Publicacion publicacion) {
+        usuario.eliminarPublicacion(publicacion);
+        actualizarPanelPublicaciones(); 
+     }
+ 
+     private void actualizarPanelPublicaciones(){
+         panelPublicaciones.removeAll();
+         List<Publicacion> publicacionesList=new ArrayList<>(usuario.getPublicaciones());
+         for(int i= publicacionesList.size()-1; i>=0; i--){
+             Publicacion publicacion = publicacionesList.get(i);
+             panelPublicaciones.add(new JPublicacion(this,publicacion));
+ 
+         }
+         panelPublicaciones.revalidate();
+         panelPublicaciones.repaint();
+     }
 }

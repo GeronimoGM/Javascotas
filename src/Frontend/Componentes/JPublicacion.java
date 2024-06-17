@@ -20,7 +20,7 @@ import Backend.Social.Clases.Publicacion;
 import Frontend.Paginas.JPaginaPerfil;
 
 public class JPublicacion extends JPanel {
-    JPaginaPerfil parent;
+    public JPaginaPerfil parent;
     
     public Publicacion publicacion;
     
@@ -33,6 +33,7 @@ public class JPublicacion extends JPanel {
     public JButton like;
     public JLabel cantLikes;
     public JButton comentarios;
+    public JButton eliminar;
 
     public JSeccionComentarios seccionComentarios;
     
@@ -102,6 +103,13 @@ public class JPublicacion extends JPanel {
         this.add(hora);
         this.add(foto);
         this.add(footer);
+        if(Gestor.sesionIniciada.equals(parent.usuario)){
+            eliminar = new JButton ("Eliminar");
+            eliminar.setAlignmentX(Component.CENTER_ALIGNMENT);
+            eliminar.setFocusPainted(false);
+            eliminar.addActionListener(e->eliminarPublicacion());
+            this.add(eliminar);
+        }
     }
 
     private void abrirComentarios() {
@@ -122,5 +130,8 @@ public class JPublicacion extends JPanel {
             cantLikes.setText("Likes: " + Integer.toString(publicacion.getCantidadLikes()));
             like.setText("Unlike");
         }
+    }
+    private void eliminarPublicacion() {
+        parent.eliminarPublicacion(publicacion);
     }
 }

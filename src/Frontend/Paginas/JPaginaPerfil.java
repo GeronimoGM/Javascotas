@@ -84,11 +84,7 @@ public class JPaginaPerfil extends JScrollPane {
         edad = new JLabel("Edad: " + Integer.toString(usuario.getEdad()));
         edad.setFont(new Font("Arial", Font.BOLD, 24));
 
-        if (usuario.getSexo() == Sexo.MASCULINO) {
-            sexo = new JLabel("Sexo: masculino");
-        } else {
-            sexo = new JLabel("Sexo: femenino");
-        }
+        sexo = new JLabel("Sexo: " + (usuario.getSexo() == Sexo.MASCULINO ? "masculino" : "femenino"));
         sexo.setFont(new Font("Arial", Font.BOLD, 24));
 
         edadYSexo.add(edad);

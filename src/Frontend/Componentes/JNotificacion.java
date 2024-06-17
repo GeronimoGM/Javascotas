@@ -30,11 +30,11 @@ public class JNotificacion extends JPanel {
         var aux2 = noti.getNotificacion();
         JLabel notiLabel = new JLabel();
         if (aux2 instanceof Like) {
-            notiLabel.setText(((Like) aux2).getUsername() + " te ha likeado: ");
+            notiLabel.setText(((Like) aux2).getUsername() + " te ha likeado.");
         } else if (aux2 instanceof Mensaje) {
             notiLabel.setText(((Mensaje) aux2).getUsername() + " te ha enviado un mensaje: " + ((Mensaje) aux2).getTexto());
         } else {
-            notiLabel.setText(((Comentario) aux2).getUsername() + " te ha comentado: " + ((Mensaje) aux2).getTexto());
+            notiLabel.setText(((Comentario) aux2).getUsername() + " te ha comentado: " + ((Comentario) aux2).getTexto());
         }
 
         // container

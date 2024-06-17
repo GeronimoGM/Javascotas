@@ -17,9 +17,11 @@ import javax.swing.ScrollPaneConstants;
 
 import Backend.Gestor.Clases.Gestor;
 import Backend.Mascotas.Clases.Abstracta.Mascota;
+import Backend.Social.Clases.Mensaje;
 import Backend.Social.Clases.Publicacion;
 import Backend.Social.Clases.Usuario;
 import Backend.Social.Enums.Sexo;
+import Frontend.Componentes.JChat;
 import Frontend.Componentes.JFormMascota;
 import Frontend.Componentes.JFormPublicar;
 import Frontend.Componentes.JMascota;
@@ -40,11 +42,13 @@ public class JPaginaPerfil extends JScrollPane {
     public JLabel sexo;
     
     public JPanel panelOpciones;
+    public JButton mensaje;
     public JButton publicar;
     public JButton mascota;
 
     public JFormPublicar formPublicar;
     public JFormMascota formMascota;
+    public JChat chat;
 
     public JPanel panelMascotasYPublicaciones;
     public JLabel labelMascotas;
@@ -112,7 +116,14 @@ public class JPaginaPerfil extends JScrollPane {
            formMascota = new JFormMascota(this);
         }
         else {
-           // TODO: botonMensaje
+           mensaje = new JButton();
+           mensaje.setFocusPainted(false);
+           mensaje.addActionListener(e -> abrirChat());
+
+           panelOpciones.add(Box.createHorizontalGlue());
+           panelOpciones.add(mensaje);
+
+           chat = new JChat(Gestor.sesionIniciada.getUsername(), usuario.getUsername());
         }
 
         header.add(Box.createRigidArea(new Dimension(0, 25)));
@@ -170,5 +181,9 @@ public class JPaginaPerfil extends JScrollPane {
 
     private void anadirMascota() {
         formMascota.setVisible(true);
+    }
+
+    private void abrirChat(){
+        chat.inicializar();
     }
 }

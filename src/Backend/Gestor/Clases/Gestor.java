@@ -150,8 +150,8 @@ public class Gestor {
                 .registerTypeAdapter(LocalDateTime.class, localDateTimeDeserializer)
                 .registerTypeAdapter(File.class, fileSerializer)
                 .registerTypeAdapter(File.class, fileDeserializer)
-                .registerTypeAdapter(Notificacion.class, new NotificacionDeserializer())
-                .registerTypeAdapter(Notificacion.class, new NotificacionSerializer())
+                .registerTypeAdapter(Notificacion.class, new NotificacionDeserializer()) // Registro del adaptador de Notificacion
+                .registerTypeAdapter(Notificacion.class, new NotificacionSerializer()) // Registro del adaptador de Notificacion
                 .registerTypeAdapter(Mascota.class, new MascotaAdapter()) // Registro del adaptador de Mascota
                 .create();
     }

@@ -8,6 +8,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Backend.Gestor.Clases.Gestor;
@@ -44,7 +45,7 @@ public class JComentario extends JPanel {
             username = new JLabel(Gestor.getUsuario(comentario.getUsername()).getNombre() + " (" + comentario.getUsername() + ")");
             username.setFont(new Font("Arial", Font.BOLD, 14));
         } catch (Exception e) {
-            // TODO: handle exception
+            JOptionPane.showMessageDialog(this, "Este usuario no existe", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
         textoYHora = new JPanel();

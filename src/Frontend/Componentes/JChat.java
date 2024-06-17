@@ -22,7 +22,7 @@ public class JChat extends JFrame {
         try {
             this.chat = Gestor.sesionIniciada.abrirChat(Gestor.getUsuario(receptor));
         } catch (UsuarioNoExistenteException e) {
-            // TODO: handle exception
+            JOptionPane.showMessageDialog(this, "Este usuario no existe", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
         setTitle("Chat con " + receptor);

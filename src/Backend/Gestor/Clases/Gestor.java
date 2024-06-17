@@ -139,7 +139,11 @@ public class Gestor {
         JsonDeserializer<LocalDateTime> localDateTimeDeserializer = (json, typeOfT, context) -> LocalDateTime.parse(json.getAsString(), dateTimeFormatter);
         
         // Serializadores y deserializadores para File
-        JsonSerializer<File> fileSerializer = (src, typeOfSrc, context) -> context.serialize(src.getAbsolutePath());
+        JsonSerializer<File> fileSerializer = (src, typeOfSrc, context) -> {
+            String absolutePath = src.getAbsolutePath();
+            String relevantPath = absolutePath.substring(absolutePath.indexOf("files"));
+            return context.serialize(relevantPath);
+        };
         JsonDeserializer<File> fileDeserializer = (json, typeOfT, context) -> new File(json.getAsString());
         
         // Construcción de Gson con los adaptadores personalizados

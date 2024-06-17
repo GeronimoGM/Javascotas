@@ -17,7 +17,6 @@ import javax.swing.ScrollPaneConstants;
 
 import Backend.Gestor.Clases.Gestor;
 import Backend.Mascotas.Clases.Abstracta.Mascota;
-import Backend.Social.Clases.Mensaje;
 import Backend.Social.Clases.Publicacion;
 import Backend.Social.Clases.Usuario;
 import Backend.Social.Enums.Sexo;

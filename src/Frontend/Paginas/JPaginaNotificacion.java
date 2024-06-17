@@ -3,6 +3,8 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.ScrollPane;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.ListIterator;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -21,11 +23,13 @@ public class JPaginaNotificacion extends JScrollPane {
     public JPanel labelNotificacion;
     public ScrollPane scroll;
     public JPanel container;
+    public LinkedList <Notificacion<?>> lista;
 
     public JPaginaNotificacion(Usuario usuario) {
         container = new JPanel();
         header = new JLabel();
         labelNotificacion = new JPanel();
+        lista = new LinkedList<>();
 
         container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
         header.setText("NOTIFICACIONES");
@@ -34,13 +38,17 @@ public class JPaginaNotificacion extends JScrollPane {
         header.setBorder(borde);
         labelNotificacion.setLayout(new BoxLayout(labelNotificacion, BoxLayout.Y_AXIS));
 
+
         // TODO: PERFECCIONAR
 
-        // label notificacion
-
-        Iterator<Notificacion<?>> iterador1 = usuario.getNotificaciones().iterator(); // pasa noti y verifica que es
+        Iterator <Notificacion<?>> iterador1 = usuario.getNotificaciones().iterator(); // pasa noti y verifica que es
         while (iterador1.hasNext()) {
-            JNotificacion noti = new JNotificacion(iterador1.next());
+            lista.add(iterador1.next());
+        }
+
+        ListIterator <Notificacion<?>> iterador2 = lista.listIterator(lista.size());
+        while (iterador2.hasPrevious()) {
+            JNotificacion noti = new JNotificacion(iterador2.previous());
             labelNotificacion.add(noti);
         }
 

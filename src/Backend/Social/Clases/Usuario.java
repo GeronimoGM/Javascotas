@@ -3,6 +3,7 @@ package Backend.Social.Clases;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -18,7 +19,7 @@ import javax.management.InvalidAttributeValueException;
 import Backend.Mascotas.Clases.Abstracta.Mascota;
 import Backend.Social.Enums.Sexo;
 
-public class Usuario {
+public class Usuario implements Serializable {
     private String username;
     private String nombre;
     private String contrasena;

@@ -3,6 +3,7 @@ package Backend.Social.Clases;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -15,7 +16,7 @@ import java.util.UUID;
 import Backend.Mascotas.Clases.Abstracta.Mascota;
 import Backend.Social.Interfaces.Likeable;
 
-public class Publicacion implements Likeable {
+public class Publicacion implements Likeable, Serializable {
     private UUID id;
     private String username;
     private LocalDateTime hora;

@@ -1,5 +1,6 @@
 package Backend.Social.Clases;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.UUID;
@@ -7,7 +8,7 @@ import java.util.UUID;
 import Backend.Social.Interfaces.Likeable;
 import Backend.Social.Interfaces.Notificadora;
 
-public class Comentario implements Notificadora<Comentario>, Likeable, Comparable<Comentario> {
+public class Comentario implements Notificadora<Comentario>, Likeable, Comparable<Comentario>, Serializable {
     private UUID id;
     private String username;
     private String texto;

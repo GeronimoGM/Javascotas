@@ -1,8 +1,10 @@
 package Backend.Social.Clases;
 
+import java.io.Serializable;
+
 import Backend.Social.Interfaces.Notificadora;
 
-public class Like implements Notificadora<Like> {
+public class Like implements Notificadora<Like>, Serializable {
     private String username;
     // Constructores
     public Like(String username) {

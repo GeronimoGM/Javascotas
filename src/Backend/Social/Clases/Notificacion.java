@@ -1,8 +1,10 @@
 package Backend.Social.Clases;
 
+import java.io.Serializable;
+
 import Backend.Social.Interfaces.Notificadora;
 
-public class Notificacion<T extends Notificadora<T>> {
+public class Notificacion<T extends Notificadora<T>> implements Serializable {
     private T notificacion;
     // Constructores
     public Notificacion(T notificacion) {

@@ -1,10 +1,11 @@
 package Backend.Social.Clases;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import Backend.Social.Interfaces.Notificadora;
 
-public class Mensaje implements Notificadora<Mensaje> {
+public class Mensaje implements Notificadora<Mensaje>, Serializable {
     private String username;
     private String texto;
     private LocalDateTime hora;

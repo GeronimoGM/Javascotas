@@ -1,11 +1,12 @@
 package Backend.Social.Clases;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
 import Backend.Gestor.Clases.Gestor;
 import Backend.Gestor.Excepciones.UsuarioNoExistenteException;
 
-public class Chat {
+public class Chat implements Serializable {
     private String emisor;
     private String receptor;
     private LinkedList<Mensaje> mensajes;

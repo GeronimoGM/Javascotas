@@ -22,6 +22,7 @@ import Backend.Gestor.Excepciones.ContrasenaIncorrectaException;
 import Backend.Gestor.Excepciones.UsuarioNoExistenteException;
 import Backend.Gestor.Excepciones.UsuarioYaExistenteException;
 import Backend.Mascotas.Clases.Abstracta.Mascota;
+import Backend.Social.Clases.Notificacion;
 import Backend.Social.Clases.Usuario;
 
 public class Gestor {
@@ -99,6 +100,10 @@ public class Gestor {
     }
 
     public static void cargar() {
+        if (!jsonFile.exists()) {
+            return;
+        }
+        
         BufferedReader buffer = null;
 
         try {
@@ -145,6 +150,8 @@ public class Gestor {
                 .registerTypeAdapter(LocalDateTime.class, localDateTimeDeserializer)
                 .registerTypeAdapter(File.class, fileSerializer)
                 .registerTypeAdapter(File.class, fileDeserializer)
+                .registerTypeAdapter(Notificacion.class, new NotificacionDeserializer())
+                .registerTypeAdapter(Notificacion.class, new NotificacionSerializer())
                 .registerTypeAdapter(Mascota.class, new MascotaAdapter()) // Registro del adaptador de Mascota
                 .create();
     }

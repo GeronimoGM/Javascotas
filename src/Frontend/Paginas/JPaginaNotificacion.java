@@ -38,9 +38,6 @@ public class JPaginaNotificacion extends JScrollPane {
         header.setBorder(borde);
         labelNotificacion.setLayout(new BoxLayout(labelNotificacion, BoxLayout.Y_AXIS));
 
-
-        // TODO: PERFECCIONAR
-
         Iterator <Notificacion<?>> iterador1 = usuario.getNotificaciones().iterator(); // pasa noti y verifica que es
         while (iterador1.hasNext()) {
             lista.add(iterador1.next());

@@ -115,14 +115,13 @@ public class JPaginaPerfil extends JScrollPane {
            formMascota = new JFormMascota(this);
         }
         else {
-           mensaje = new JButton();
+           mensaje = new JButton("Enviar mensaje");
            mensaje.setFocusPainted(false);
            mensaje.addActionListener(e -> abrirChat());
 
            panelOpciones.add(Box.createHorizontalGlue());
            panelOpciones.add(mensaje);
-
-           chat = new JChat(Gestor.sesionIniciada.getUsername(), usuario.getUsername());
+           panelOpciones.add(Box.createHorizontalGlue());
         }
 
         header.add(Box.createRigidArea(new Dimension(0, 25)));
@@ -183,6 +182,7 @@ public class JPaginaPerfil extends JScrollPane {
     }
 
     private void abrirChat(){
+        chat = new JChat(Gestor.sesionIniciada.getUsername(), usuario.getUsername());
         chat.inicializar();
     }
 }

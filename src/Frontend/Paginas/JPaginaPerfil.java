@@ -5,6 +5,8 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -155,7 +157,9 @@ public class JPaginaPerfil extends JScrollPane {
         panelPublicaciones = new JPanel();
         panelPublicaciones.setLayout(new BoxLayout(panelPublicaciones, BoxLayout.Y_AXIS));
 
-        for (Publicacion publicacion : usuario.getPublicaciones()) {
+        List<Publicacion> publicacionesList = new ArrayList<>(usuario.getPublicaciones());
+        for (int i = publicacionesList.size() - 1; i >= 0; i--) {
+            Publicacion publicacion = publicacionesList.get(i);
             panelPublicaciones.add(new JPublicacion(this, publicacion));
         }
 

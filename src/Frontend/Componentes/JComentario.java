@@ -41,7 +41,7 @@ public class JComentario extends JPanel {
         panelComentario.setLayout(new BoxLayout(panelComentario, BoxLayout.Y_AXIS)); 
 
         try {
-            username = new JLabel(Gestor.getUsuario(comentario.getUsername()).getNombre() + "(" + comentario.getUsername() + ")");
+            username = new JLabel(Gestor.getUsuario(comentario.getUsername()).getNombre() + " (" + comentario.getUsername() + ")");
             username.setFont(new Font("Arial", Font.BOLD, 14));
         } catch (Exception e) {
             // TODO: handle exception

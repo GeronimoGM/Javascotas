@@ -210,6 +210,7 @@ public class JFormPublicar extends JFrame {
             fotoPublicacion = null;
             this.setVisible(false);
             parent.parent.mostrarPerfil();
+            Gestor.guardar();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "IOException", JOptionPane.ERROR_MESSAGE);
             return;

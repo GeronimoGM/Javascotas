@@ -115,6 +115,7 @@ public class JPublicacion extends JPanel {
             cantLikes.setText("Likes: " + Integer.toString(publicacion.getCantidadLikes()));
             like.setText("Like");
             likeToAdd.notificar(parent.usuario);
+            Gestor.guardar();
         }
         else {
             publicacion.likear(Gestor.sesionIniciada);

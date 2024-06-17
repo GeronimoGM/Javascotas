@@ -84,6 +84,7 @@ public class JSeccionComentarios extends JFrame {
             panelComentarios.repaint();
             inputComentario.setText("");
             toAdd.notificar(parent.parent.usuario);
+            Gestor.guardar();
         }
         else {
             JOptionPane.showMessageDialog(this, "No se puede comentar un texto vacío.", "Error", JOptionPane.ERROR_MESSAGE);

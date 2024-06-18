@@ -1,4 +1,4 @@
-# Índice
+# Javascotas
 
 ## Información General
 1. [Datos del Proyecto](#datos-del-proyecto)
